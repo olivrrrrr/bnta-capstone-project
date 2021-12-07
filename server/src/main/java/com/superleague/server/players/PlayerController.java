@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.awt.*;
 import java.util.List;
 
-@RequestMapping("/user")
+@RequestMapping("/api/v1/players")
 @RestController
  public class PlayerController {
 
@@ -15,13 +15,13 @@ import java.util.List;
     @Autowired
     public PlayerController(PlayerService playerService) {this.playerService = playerService; }
 
-    @PostMapping
+    @PostMapping("{addOne}")
     public int addPlayer (@RequestBody Player player) {
         playerService.addPlayer(player);
         return 1;
     }
 
-    @PostMapping
+    @PostMapping("{addMany}")
     public int addPlayers (@RequestBody List<Player> players) {
         playerService.addPlayers(players);
         return 1;

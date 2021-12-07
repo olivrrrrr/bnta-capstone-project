@@ -1,3 +1,4 @@
+/*
 package com.superleague.server.users;
 
 
@@ -25,3 +26,4 @@ public class User {
     private String teamName;
 
 }
+*/

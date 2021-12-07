@@ -1,3 +1,4 @@
+/*
 package com.superleague.server.userTeam;
 
 public class UserTeam {
@@ -19,3 +20,4 @@ public class UserTeam {
 
 
 }
+*/

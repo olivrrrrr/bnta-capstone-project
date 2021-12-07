@@ -2,16 +2,18 @@ package com.superleague.server.players;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class PlayerService {
 
     private PlayerRepository playerRepository;
 
     @Autowired
-    public PlayerService(@Qualifier("database") PlayerRepository playerRepository) {
+    public PlayerService(@Qualifier("players") PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 
