@@ -1,0 +1,59 @@
+package com.superleague.server.players;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
+import java.util.List;
+
+@RequestMapping("/user")
+@RestController
+ public class PlayerController {
+
+    private PlayerService playerService;
+
+    @Autowired
+    public PlayerController(PlayerService playerService) {this.playerService = playerService; }
+
+    @PostMapping
+    public int addPlayer (@RequestBody Player player) {
+        playerService.addPlayer(player);
+        return 1;
+    }
+
+    @PostMapping
+    public int addPlayers (@RequestBody List<Player> players) {
+        playerService.addPlayers(players);
+        return 1;
+    }
+
+    @GetMapping("{id}")
+    public Player getPlayer(){
+
+    }
+
+
+
+
+    @PutMapping
+    public void updateAllPlayers(List<Player> players){
+        /*
+        get all players in our db
+        get a list of players from fetch
+
+        for i=0 to length of players
+            gameweekPts
+            int gd = update player goals
+
+            int ad = update player assists
+
+            update player clean sheets
+            ...
+            gameweekPts += (gd*5) + (ad*2) + ...
+            player.setWeekPts(gameweekPts)
+            player.incrementTotal(gameweekPts)
+         */
+    }
+
+
+}
