@@ -14,10 +14,10 @@ public class UserTeamController {
 
     @Autowired
     public UserTeamController(UserTeamService userTeamService) {this.userTeamService = userTeamService;}
-    
-    @PostMapping
-    public int addUserTeam (@RequestBody UserTeam userTeam){
-        userTeamService.addUserTeam(userTeam);
-        return
-    }
+//
+//    @PostMapping
+//    public int addUserTeam (@RequestBody UserTeam userTeam){
+//        userTeamService.addUserTeam(userTeam);
+//        return
+//    }
 }

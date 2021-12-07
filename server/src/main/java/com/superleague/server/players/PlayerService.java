@@ -28,26 +28,26 @@ public class PlayerService {
     }
 
 
-    @Transactional
-    public void updatePlayerName(Long playerId, String name){
-        Player player = playerRepository.findPlayerById(playerId).orElseThrow(()
-                -> new IllegalStateException("doesn't exist"));
-        if (name != null && name.length()>0 && !player.getName().equals(name)){
-            player.setName(name);
-        }
-    }
-
-    @Transactional
-    public int updatePlayerGoals(Long playerId, int goals){
-        Player player = playerRepository.findPlayerById(playerId).orElseThrow(()
-                -> new IllegalStateException("doesn't exist"));
-        if (player.getGoals()==goals){
-            int goalDifference = goals - player.getGoals();
-            player.setGoals(goals);
-            return goalDifference;
-        }
-        return 0;
-    }
+//    @Transactional
+//    public void updatePlayerName(Long playerId, String name){
+//        Player player = playerRepository.findPlayerById(playerId).orElseThrow(()
+//                -> new IllegalStateException("doesn't exist"));
+//        if (name != null && name.length()>0 && !player.getName().equals(name)){
+//            player.setName(name);
+//        }
+//    }
+//
+//    @Transactional
+//    public int updatePlayerGoals(Long playerId, int goals){
+//        Player player = playerRepository.findPlayerById(playerId).orElseThrow(()
+//                -> new IllegalStateException("doesn't exist"));
+//        if (player.getGoals()==goals){
+//            int goalDifference = goals - player.getGoals();
+//            player.setGoals(goals);
+//            return goalDifference;
+//        }
+//        return 0;
+//    }
 
     public void addPlayers(List<Player> players) {
     }

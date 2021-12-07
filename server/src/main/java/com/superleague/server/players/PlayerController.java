@@ -27,10 +27,10 @@ import java.util.List;
         return 1;
     }
 
-    @GetMapping("{id}")
-    public Player getPlayer(){
-
-    }
+//    @GetMapping("{id}")
+//    public Player getPlayer(){
+//
+//    }
 
 
 
