@@ -7,7 +7,7 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table
+@Table(name = "players")
 public class Player {
 
     @Id
