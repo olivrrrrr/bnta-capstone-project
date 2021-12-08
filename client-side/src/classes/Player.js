@@ -18,10 +18,6 @@ class Player {
             this.weeklyPoints = 0;
             this.leagueName = leagueName;
     }
-
-    calcTotalPoints() {
-        return 100;
-    }
 }
 
 export default Player;
