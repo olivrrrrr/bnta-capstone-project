@@ -1,23 +1,27 @@
-/*package com.superleague.server.userTeam;
+package com.superleague.server.fantasyPlayer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/userteam")
+import java.util.List;
+import java.util.Optional;
+
+@RequestMapping("/api/v1/fantasyplayers")
 @RestController
-public class UserTeamController {
+public class FantasyPlayerController {
 
-    //private UserTeamService userTeamService;
+    private FantasyPlayerService fantasyplayerService;
 
-    //@Autowired
-    //public UserTeamController(UserTeamService userTeamService) {this.userTeamService = userTeamService;}
-//
-//    @PostMapping
-//    public int addUserTeam (@RequestBody UserTeam userTeam){
-//        userTeamService.addUserTeam(userTeam);
-//        return
-//    }
-}*/
+    @Autowired
+    public FantasyPlayerController(FantasyPlayerService fantasyplayerService) {this.fantasyplayerService = fantasyplayerService; }
+
+    // adding fantasy player
+    @PostMapping
+    public void addFantasyPlayer (@RequestBody FantasyPlayer fantasyplayer) {fantasyplayerService.addFantasyPlayer(fantasyplayer);}
+
+//    delete fantasy player
+    @DeleteMapping("{id}")
+    public void deleteFantasyPlayer(@PathVariable("id") long id) {fantasyplayerService.deleteFantasyPlayer(id);}
+
+    }
+
