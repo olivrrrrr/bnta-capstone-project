@@ -64,7 +64,6 @@ public class UserService {
 
 
     public void updateWeeklyPoints(Long id, User user) {
-
     }
 
     public void updateEmail(Integer id, String email) {
