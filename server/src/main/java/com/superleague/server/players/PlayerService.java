@@ -52,5 +52,6 @@ public class PlayerService {
 //    }
 
     public void addPlayers(List<Player> players) {
+        playerRepository.saveAll(players);
     }
 }
