@@ -1,14 +1,19 @@
-
+/*
 package com.superleague.server.users;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.superleague.server.players.Player;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Entity
-@Table (name = "User")
+@Entity (name = "User")
 public class User {
 
 //    @Id
@@ -114,8 +119,13 @@ public class User {
         return id.equals(user.id) && email.equals(user.email) && username.equals(user.username) && password.equals(user.password) && teamName.equals(user.teamName) && weeklyPoints.equals(user.weeklyPoints) && totalPoints.equals(user.totalPoints);
     }
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "playersUsers")
+    private Set<Player> team = new HashSet<>();
+
     @Override
     public int hashCode() {
         return Objects.hash(id, email, username, password, teamName, weeklyPoints, totalPoints);
     }
 }
+*/
