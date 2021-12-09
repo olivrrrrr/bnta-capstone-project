@@ -1,8 +1,12 @@
 package com.superleague.server.players;
 
 
+import com.superleague.server.users.User;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -25,6 +29,45 @@ public class Player {
     private int totalPoints;
     private int weeklyPoints;
     private String leagueName;
+
+    @ManyToMany
+    @JoinTable(
+            name="fantasyplayers",
+            joinColumns = @JoinColumn(name="player_id"),
+            inverseJoinColumns = @JoinColumn(name="user_id")
+    )
+    private Set<User> playersUsers = new HashSet<>();
+
+    public Player(Long id, String name, String photo, String teamName, int appearances, int goals, int assists, int yellows, int reds, int conceded, String position, int totalPoints, int weeklyPoints, String leagueName) {
+        this.id = id;
+        this.name = name;
+        this.photo = photo;
+        this.teamName = teamName;
+        this.appearances = appearances;
+        this.goals = goals;
+        this.assists = assists;
+        this.yellows = yellows;
+        this.reds = reds;
+        this.conceded = conceded;
+        this.position = position;
+        this.totalPoints = totalPoints;
+        this.weeklyPoints = weeklyPoints;
+        this.leagueName = leagueName;
+    }
+
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<User> getPlayersUsers() {
+        return playersUsers;
+    }
+
+    public void setPlayersUsers(Set<User> playersUsers) {
+        this.playersUsers = playersUsers;
+    }
 
     public long getId() {
         return id;
