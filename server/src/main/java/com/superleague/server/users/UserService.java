@@ -64,7 +64,12 @@ public class UserService {
     }
 
 
-    public void updateWeeklyPoints(Long id, User user) {
+    public void updateWeeklyPoints(Long id, Integer weeklyPoints) {
+        User user = getUserById(id).orElseThrow(() ->
+                new ResourceNotFound("user with this id:" + id + " doesn't exist")
+        );
+        user.setWeeklyPoints(weeklyPoints);
+        userRepository.updateWeeklyPoints(id);
     }
 
     public void updateEmail(Integer id, String email) {

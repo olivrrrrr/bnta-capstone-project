@@ -33,7 +33,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     int getWeeklyPointsByTeam(String teamName);
 
 
+    void setEmail(String email);
 
+    void updateWeeklyPoints(Long id);
 }
   
   
