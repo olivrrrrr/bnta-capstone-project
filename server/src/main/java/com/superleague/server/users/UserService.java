@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -63,15 +64,15 @@ public class UserService {
         return userRepository.getWeeklyPointsByTeam(teamName);
     }
 
-
+        @Transactional
     public void updateWeeklyPoints(Long id, Integer weeklyPoints) {
         User user = getUserById(id).orElseThrow(() ->
                 new ResourceNotFound("user with this id:" + id + " doesn't exist")
         );
         user.setWeeklyPoints(weeklyPoints);
-        userRepository.updateWeeklyPoints(id);
+//        userRepository.updateWeeklyPoints(id);
     }
-
+        @Transactional
     public void updateEmail(Integer id, String email) {
         User user = getUserById(id).orElseThrow(() ->
                 new ResourceNotFound("user with this id:" + id + " doesn't exist")
@@ -80,13 +81,13 @@ public class UserService {
         user.setEmail(email);
 //        userRepository.updateUser(user.getEmail());
     }
-
+        @Transactional
     public void updatePassword(Integer id, String password){
          User user = getUserById(id).orElseThrow(() ->
                 new ResourceNotFound("user with this id:" + id + " doesn't exist")
         );
         user.setPassword(password);
-        userRepository.updateUser(user.getPassword())
+//        userRepository.updateUser(user.getPassword())
     }
 
 
