@@ -1,8 +1,12 @@
 package com.superleague.server.players;
 
 
+import com.superleague.server.users.User;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -25,6 +29,27 @@ public class Player {
     private int totalPoints;
     private int weeklyPoints;
     private String leagueName;
+
+
+    @ManyToMany
+    @JoinTable(
+            name="fantasyplayers",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="player_id")
+    )
+    private Set<User> playersUsers = new HashSet<>();
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<User> getPlayersUsers() {
+        return playersUsers;
+    }
+
+    public void setPlayersUsers(Set<User> playersUsers) {
+        this.playersUsers = playersUsers;
+    }
 
     public long getId() {
         return id;
