@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class PlayerService {
 
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
     @Autowired
     public PlayerService(@Qualifier("players") PlayerRepository playerRepository) {
@@ -52,5 +52,96 @@ public class PlayerService {
 //    }
 
     public void addPlayers(List<Player> players) {
+        playerRepository.saveAll(players);
+    }
+
+    @Transactional
+    public void updatePlayerGoals(Long playerID, int goals){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentGoals = player.getGoals();
+        if (currentGoals < goals){
+            player.setGoals(goals);
+            int diff = goals - currentGoals;
+            player.setWeeklyPoints(player.getWeeklyPoints() + 5*diff);
+        }
+    }
+
+    @Transactional
+    public void updatePlayerAssists(Long playerID, int assists){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentAssists = player.getAssists();
+        if (currentAssists < assists){
+            player.setAssists(assists);
+            int diff = assists - currentAssists;
+            player.setWeeklyPoints(player.getWeeklyPoints() + 2*diff);
+        }
+    }
+
+    @Transactional
+    public void updatePlayerYellows(Long playerID, int yellows){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentYellows = player.getYellows();
+        if (currentYellows < yellows){
+            player.setYellows(yellows);
+            int diff = yellows - currentYellows;
+            player.setWeeklyPoints(player.getWeeklyPoints() - diff);
+        }
+    }
+
+    @Transactional
+    public void updatePlayerReds(Long playerID, int reds){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentReds = player.getReds();
+        if (currentReds < reds){
+            player.setReds(reds);
+            int diff = reds - currentReds;
+            player.setWeeklyPoints(player.getWeeklyPoints() - 3*diff);
+        }
+    }
+
+    @Transactional
+    public void updatePlayerCleanSheets(Long playerID, int conceded, int appearances){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentConceded = player.getConceded();
+        int currentAppearances = player.getAppearances();
+        //add check for position
+        if (currentAppearances > appearances && currentConceded == conceded){
+            int diff = appearances - currentAppearances;
+            player.setWeeklyPoints(player.getWeeklyPoints() + 4*diff);
+        }
+    }
+    @Transactional
+    public void updatePlayerAppearances(Long playerID, int appearances){
+        Player player = playerRepository.findPlayerById(playerID)
+                .orElseThrow(() -> new IllegalStateException("player not found"));
+        int currentConceded = player.getConceded();
+        int currentAppearances = player.getAppearances();
+        //add check for position
+        if (currentAppearances > appearances){
+            int diff = appearances - currentAppearances;
+            player.setWeeklyPoints(player.getWeeklyPoints() + 2*diff);
+        }
+    }
+
+    @Transactional
+    public void updateAllPlayers(List<Player> players) {
+        for (Player newPlayer : players){
+            Long id = newPlayer.getId();
+            Player currentPlayer = playerRepository.findPlayerById(id)
+                    .orElseThrow(() -> new IllegalStateException("player not found"));
+            currentPlayer.setWeeklyPoints(0);
+            updatePlayerGoals(id, newPlayer.getGoals());
+            updatePlayerAssists(id, newPlayer.getAssists());
+            updatePlayerYellows(id, newPlayer.getYellows());
+            updatePlayerReds(id, newPlayer.getReds());
+            updatePlayerCleanSheets(id, newPlayer.getConceded(), newPlayer.getAppearances());
+            updatePlayerAppearances(id, newPlayer.getAppearances());
+            currentPlayer.setTotalPoints(currentPlayer.getTotalPoints() + currentPlayer.getWeeklyPoints());
+        }
     }
 }
