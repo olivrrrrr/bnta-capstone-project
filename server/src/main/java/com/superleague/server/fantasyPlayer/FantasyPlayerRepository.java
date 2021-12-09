@@ -12,8 +12,8 @@ import java.util.Optional;
 @Repository
 public interface FantasyPlayerRepository extends JpaRepository<FantasyPlayer, Long> {
 
-    @Query("SELECT s FROM fantasyplayers s WHERE s.playerID = ?1")
-    Optional<FantasyPlayer> findFantasyPlayerByTeamPlayerId(Long id);
+//    @Query("SELECT p FROM players p LEFT JOIN fantasyplayers f )
+//    List<FantasyPlayer> findPlayersByUserIdAndPosition(Long id);
 
 }
 
