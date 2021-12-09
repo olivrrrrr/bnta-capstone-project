@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -67,13 +68,21 @@ public class UserService {
     }
 
     public void updateEmail(Integer id, String email) {
-
+        User user = getUserById(id).orElseThrow(() ->
+                new ResourceNotFound("user with this id:" + id + " doesn't exist")
+        );
+        if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email))
+        user.setEmail(email);
+//        userRepository.updateUser(user.getEmail());
     }
 
-    public void updatePassword(Integer id, String password) {
-
+    public void updatePassword(Integer id, String password){
+         User user = getUserById(id).orElseThrow(() ->
+                new ResourceNotFound("user with this id:" + id + " doesn't exist")
+        );
+        user.setPassword(password);
+        userRepository.updateUser(user.getPassword())
     }
-
 
 
     private boolean doesPersonWithIdExists(long id) {
