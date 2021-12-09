@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository ("Users")
+@Repository ("users")
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
@@ -21,21 +21,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> getUserByEmail(String email);
 
-    void addUser(User user);
+//    void addUser(User user);
 
-    void updateUser(Long id, User user);
+//    void updateUser(Long id, User user);
 
-    @Query("DELETE FROM users WHERE id = ?;")
-    Optional<User> deleteUser(Long id);
-
-    int getWeeklyPointsById(Long id);
-
-    int getWeeklyPointsByTeam(String teamName);
+//    @Query("DELETE FROM users WHERE id = ?1")
+//    Optional<User> deleteUser(Long id);
 
 
-    void setEmail(String email);
+//    int getWeeklyPointsById(Long id);
 
-    void updateWeeklyPoints(Long id);
+//    @Query("SELECT s FROM users WHERE")
+//    int getWeeklyPointsByTeam(String teamName);
+
+//
+//    void setEmail(String email);
+
+//
+//    void updateWeeklyPoints(Long id);
 }
   
   

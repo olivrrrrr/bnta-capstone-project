@@ -13,19 +13,21 @@ import java.util.Objects;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Entity (name = "User")
+@Entity
+@Table (name = "users")
 public class User {
 
-//    @Id
-//    @SequenceGenerator(
-//        name = "user_sequence",
-//        sequenceName = "user_sequence",
-//        allocationSize = 1
-////        initialValue = 1
-//    )
-//    @GeneratedValue(
-//            strategy = SEQUENCE
-//    )
+
+    @SequenceGenerator(
+        name = "user_sequence",
+        sequenceName = "user_sequence",
+        allocationSize = 1
+//        initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE
+    )
+        @Id
         private Long id;
         private String email;
         private String username;
@@ -38,6 +40,9 @@ public class User {
     @ManyToMany(mappedBy = "playersUsers")
     private Set<Player> team = new HashSet<>();
 
+
+    public User() {
+    }
 
     public User(Long id, String email, String username, String password, String teamName,
                 Integer weeklyPoints, Integer totalPoints) {

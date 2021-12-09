@@ -37,18 +37,18 @@ public class UserService {
 
 
     public void addUser(User user) {
-        userRepository.addUser(user);
+        userRepository.save(user);
         return;
     }
-
-    public String updateUser(Long id, User user) {
-        boolean exists = doesPersonWithIdExists(id);
-        if (!exists) {
-            throw new IllegalStateException("Account with id " + id + " not found");
-     }
-        this.userRepository.updateUser(id, user);
-        return "User Details Updated";
-    }
+//
+//    public String updateUser(Long id, User user) {
+//        boolean exists = doesPersonWithIdExists(id);
+//        if (!exists) {
+//            throw new IllegalStateException("Account with id " + id + " not found");
+//     }
+//        this.userRepository.updateUser(id, user);
+//        return "User Details Updated";
+//    }
 
     public void deleteUser(Long id) {
         boolean exists = doesPersonWithIdExists(id);
@@ -57,14 +57,14 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
-
-    public int getWeeklyPointsById(Long id) {
-        return userRepository.getWeeklyPointsById(id);
-         }
-
-     public int getWeeklyPointsByTeam(String teamName) {
-        return userRepository.getWeeklyPointsByTeam(teamName);
-    }
+//
+//    public int getWeeklyPointsById(Long id) {
+//        return userRepository.getWeeklyPointsById(id);
+//         }
+//
+//     public int getWeeklyPointsByTeam(String teamName) {
+//        return userRepository.getWeeklyPointsByTeam(teamName);
+//    }
 
         @Transactional
     public void updateWeeklyPoints(Long id, Integer weeklyPoints) {

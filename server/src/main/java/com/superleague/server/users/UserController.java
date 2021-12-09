@@ -28,17 +28,17 @@ public class UserController{
         public Optional<User> getUserByEmail(@PathVariable("email") String email){
         return userService.getUserByEmail(email);
         }
-
-        @GetMapping("{id}")
-        public int getWeeklyPointsById(@PathVariable("id") Long id){
-            return userService.getWeeklyPointsById(id);
-        }
-
-        @GetMapping("{teamName}")
-        public int getWeeklyPointsByTeamName(@PathVariable("teamName") String teamName){
-        return userService.getWeeklyPointsByTeam(teamName);
-        }
 //
+//        @GetMapping("{id}")
+//        public int getWeeklyPointsById(@PathVariable("id") Long id){
+//            return userService.getWeeklyPointsById(id);
+//        }
+//
+//        @GetMapping("{teamName}")
+//        public int getWeeklyPointsByTeamName(@PathVariable("teamName") String teamName){
+//        return userService.getWeeklyPointsByTeam(teamName);
+//        }
+////
 //        @GetMapping("{id}")
 //         public int getTotalPointsById(@PathVariable("id") Integer id){
 //        return userService.getTotalPoints(id);
@@ -55,10 +55,10 @@ public class UserController{
         return 1;
         }
 
-        @PutMapping("{id}/user")
-        public void updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-            userService.updateUser(id, user);
-        }
+//        @PutMapping("{id}/user")
+//        public void updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+//            userService.updateUser(id, user);
+//        }
 
         @PutMapping("{id}/email")
         public void updateEmail(@PathVariable("id") Long id, String email) {

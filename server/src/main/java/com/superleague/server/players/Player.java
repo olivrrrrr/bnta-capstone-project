@@ -38,6 +38,9 @@ public class Player {
     )
     private Set<User> playersUsers = new HashSet<>();
 
+    public Player() {
+    }
+
     public Player(Long id, String name, String photo, String teamName, int appearances, int goals, int assists, int yellows, int reds, int conceded, String position, int totalPoints, int weeklyPoints, String leagueName) {
         this.id = id;
         this.name = name;
@@ -54,7 +57,6 @@ public class Player {
         this.weeklyPoints = weeklyPoints;
         this.leagueName = leagueName;
     }
-
 
 
     public void setId(Long id) {
