@@ -34,8 +34,8 @@ public class Player {
     @ManyToMany
     @JoinTable(
             name="fantasyplayers",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name="player_id")
+            joinColumns = @JoinColumn(name="player_id"),
+            inverseJoinColumns = @JoinColumn(name="user_id")
     )
     private Set<User> playersUsers = new HashSet<>();
 
