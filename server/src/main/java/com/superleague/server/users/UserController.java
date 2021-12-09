@@ -55,18 +55,18 @@ public class UserController{
         return 1;
         }
 
-        @PutMapping("{id}")
+        @PutMapping("{id}/user")
         public void updateUser(@PathVariable("id") Long id, @RequestBody User user) {
             userService.updateUser(id, user);
         }
 
-        @PutMapping("{id}")
-        public void updateEmail(@PathVariable("id") Integer id, String email) {
+        @PutMapping("{id}/email")
+        public void updateEmail(@PathVariable("id") Long id, String email) {
             userService.updateEmail(id, email);
         }
 
-        @PutMapping("{id}")
-        public void updatePassword(@PathVariable("id") Integer id, String password) {
+        @PutMapping("{id}/password")
+        public void updatePassword(@PathVariable("id") Long id, String password) {
             userService.updatePassword(id, password);
         }
 
@@ -89,9 +89,11 @@ public class UserController{
 //                    );
 //        }
 
-        @PutMapping("{id}")
-        public void updateWeeklyPoints(@PathVariable("id") Long id, @RequestBody User user) {
-        userService.updateWeeklyPoints(id, user);
+        @PutMapping
+        public void updateAllUsers (List<User> userList) {
+
+                userService.updateAllUsers(userList);
+
         }
 
         @DeleteMapping

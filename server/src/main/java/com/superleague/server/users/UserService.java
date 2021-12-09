@@ -1,10 +1,12 @@
 package com.superleague.server.users;
 
+import com.superleague.server.exceptions.ResourceNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -73,7 +75,7 @@ public class UserService {
 //        userRepository.updateWeeklyPoints(id);
     }
         @Transactional
-    public void updateEmail(Integer id, String email) {
+    public void updateEmail(Long id, String email) {
         User user = getUserById(id).orElseThrow(() ->
                 new ResourceNotFound("user with this id:" + id + " doesn't exist")
         );
@@ -82,7 +84,7 @@ public class UserService {
 //        userRepository.updateUser(user.getEmail());
     }
         @Transactional
-    public void updatePassword(Integer id, String password){
+    public void updatePassword(Long id, String password){
          User user = getUserById(id).orElseThrow(() ->
                 new ResourceNotFound("user with this id:" + id + " doesn't exist")
         );
@@ -104,6 +106,9 @@ public class UserService {
                 .anyMatch(p -> p.getEmail() == email);
     }
 
+    public void updateAllUsers(List<User> userList) {
+
+    }
 
 
 //    public int deleteSpell(long id) {

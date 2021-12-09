@@ -1,4 +1,4 @@
-/*
+
 package com.superleague.server.users;
 
 
@@ -33,6 +33,10 @@ public class User {
         private String teamName;
         private Integer weeklyPoints;
         private Integer totalPoints;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "playersUsers")
+    private Set<Player> team = new HashSet<>();
 
 
     public User(Long id, String email, String username, String password, String teamName,
@@ -119,13 +123,9 @@ public class User {
         return id.equals(user.id) && email.equals(user.email) && username.equals(user.username) && password.equals(user.password) && teamName.equals(user.teamName) && weeklyPoints.equals(user.weeklyPoints) && totalPoints.equals(user.totalPoints);
     }
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "playersUsers")
-    private Set<Player> team = new HashSet<>();
-
     @Override
     public int hashCode() {
         return Objects.hash(id, email, username, password, teamName, weeklyPoints, totalPoints);
     }
 }
-*/
+
