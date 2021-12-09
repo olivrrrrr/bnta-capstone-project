@@ -9,5 +9,14 @@ const postAllPlayers = (players) => {
     )
 }
 
+const updateAllPlayers = (players) => {
+    return(
+        axios.put("http://localhost:8080/api/v1/players/updateAllPlayers", players)
+        .catch(e => {
+            console.log(e)
+        })
+    )
+}
 
-export {postAllPlayers}
+
+export {postAllPlayers, updateAllPlayers}

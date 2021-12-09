@@ -2,7 +2,7 @@ import React from 'react'
 import {fetchPlayerData} from '../adaptors/PlayerAdaptor';
 import {useState, useEffect} from 'react';
 import Button from '../components/Button';
-import {postAllPlayers} from '../adaptors/BackendAdapter'
+import {postAllPlayers, updateAllPlayers} from '../adaptors/BackendAdapter'
 
 function AdminPage() {
 
@@ -18,6 +18,10 @@ function AdminPage() {
         postAllPlayers(players)
     }
 
+    const updatePlayersInDb = () => {
+        updateAllPlayers(players)
+    }
+
     console.log(players);
 
     return (
@@ -27,6 +31,7 @@ function AdminPage() {
 
         <div>
             <Button clickMethod={postPlayersToDb} name="Post players to db" />
+            <Button clickMethod={updateAllPlayers} name="Update player stats" />
            {players[0].name}
         </div>
 

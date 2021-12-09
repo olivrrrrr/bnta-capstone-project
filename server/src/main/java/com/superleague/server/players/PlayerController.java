@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import java.awt.*;
 import java.util.List;
 
+
+//every endpoint in this class should only be accessible by an admin user
 @RequestMapping("/api/v1/players")
 @RestController
  public class PlayerController {
@@ -15,11 +17,11 @@ import java.util.List;
     @Autowired
     public PlayerController(PlayerService playerService) {this.playerService = playerService; }
 
-    @PostMapping("addOne")
+/*    @PostMapping("addOne")
     public int addPlayer (@RequestBody Player player) {
         playerService.addPlayer(player);
         return 1;
-    }
+    }*/
 
     @PostMapping("addMany")
     public int addManyPlayers (@RequestBody List<Player> players) {
@@ -34,8 +36,7 @@ import java.util.List;
 
 
 
-
-    @PutMapping
+    @PutMapping("updateAllPlayers")
     public void updateAllPlayers(List<Player> players){
         /*
         get all players in our db
@@ -53,6 +54,7 @@ import java.util.List;
             player.setWeekPts(gameweekPts)
             player.incrementTotal(gameweekPts)
          */
+        playerService.updateAllPlayers(players);
     }
 
 
