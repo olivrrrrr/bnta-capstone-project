@@ -1,6 +1,8 @@
 package com.superleague.server.users;
 
 import com.superleague.server.exceptions.ResourceNotFound;
+import com.superleague.server.players.Player;
+import com.superleague.server.players.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PlayerService playerService;
 
     @Autowired
-    public UserService(@Qualifier("users") UserRepository userRepository){
+    public UserService(@Qualifier("users") UserRepository userRepository, PlayerService playerService){
         this.userRepository = userRepository;
+        this.playerService = playerService;
     }
 
     public Optional<User> getUserById(Long id) {
@@ -25,7 +29,8 @@ public class UserService {
         if (!exists) {
             throw new IllegalStateException("Account with id " + id + " not found");
         }
-        return userRepository.getUserById(id); }
+        return userRepository.getUserById(id);
+    }
 
 
     public Optional<User> getUserByEmail(String email) {
@@ -93,6 +98,8 @@ public class UserService {
     }
 
 
+
+
     private boolean doesPersonWithIdExists(long id) {
         return userRepository
                 .findAll()
@@ -108,6 +115,16 @@ public class UserService {
 
     public void updateAllUsers(List<User> userList) {
 
+    }
+
+//    @Transactional
+    public void addFantasyPlayer(Long playerId, Long userId) {
+        User user = userRepository.getUserById(userId).get();
+        Player player = playerService.getPlayerById(playerId);
+
+        user.addPlayerToTeam(player);
+
+        userRepository.save(user);
     }
 
 

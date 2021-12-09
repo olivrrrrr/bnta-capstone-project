@@ -19,14 +19,20 @@ public class UserController{
             this.userService = userService;
         }
 
-        @GetMapping("{id}")
+        @GetMapping("id={id}")
         public Optional<User> getUserById(@PathVariable("id") Long id){
-            return userService.getUserById(id);
+
+                return userService.getUserById(id);
         }
 
-        @GetMapping("{email}")
+        @GetMapping("email={email}")
         public Optional<User> getUserByEmail(@PathVariable("email") String email){
         return userService.getUserByEmail(email);
+        }
+
+        @PutMapping("player={playerId}/user={userId}")
+        public void addFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId) {
+                userService.addFantasyPlayer(playerId, userId);
         }
 //
 //        @GetMapping("{id}")
@@ -49,7 +55,7 @@ public class UserController{
 //        return userService.getTotalPoints(teamName);
 //        }
 
-        @PostMapping("{addUser}")
+        @PostMapping("/addUser")
         public int addUser (@RequestBody User user) {
         userService.addUser(user);
         return 1;

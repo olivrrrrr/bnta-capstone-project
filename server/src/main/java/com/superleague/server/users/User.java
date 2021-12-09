@@ -18,16 +18,16 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class User {
 
 
+    @Id
     @SequenceGenerator(
         name = "user_sequence",
         sequenceName = "user_sequence",
-        allocationSize = 1
-//        initialValue = 1
+        allocationSize = 1,
+         initialValue = 1
     )
     @GeneratedValue(
             strategy = SEQUENCE
     )
-        @Id
         private Long id;
         private String email;
         private String username;
@@ -36,23 +36,36 @@ public class User {
         private Integer weeklyPoints;
         private Integer totalPoints;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "playersUsers")
-    private Set<Player> team = new HashSet<>();
+        @JsonIgnore
+        @ManyToMany(mappedBy = "playersUsers")
+        private Set<Player> team = new HashSet<>();
+
+    public Set<Player> getTeam() {
+        return team;
+    }
+
+    public void setTeam(Set<Player> team) {
+        this.team = team;
+    }
 
 
     public User() {
+        super();
     }
 
-    public User(Long id, String email, String username, String password, String teamName,
+    public User( String email, String username, String password, String teamName,
                 Integer weeklyPoints, Integer totalPoints) {
-        this.id = id;
+        super();
         this.email = email;
         this.username = username;
         this.password = password;
         this.teamName = teamName;
         this.weeklyPoints = weeklyPoints;
         this.totalPoints = totalPoints;
+    }
+
+    public void addPlayerToTeam(Player player) {
+        team.add(player);
     }
 
     public Long getId() {

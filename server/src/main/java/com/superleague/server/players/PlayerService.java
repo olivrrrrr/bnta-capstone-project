@@ -144,4 +144,8 @@ public class PlayerService {
             currentPlayer.setTotalPoints(currentPlayer.getTotalPoints() + currentPlayer.getWeeklyPoints());
         }
     }
+
+    public Player getPlayerById(long id) {
+        return playerRepository.findPlayerById(id).get();
+    }
 }
