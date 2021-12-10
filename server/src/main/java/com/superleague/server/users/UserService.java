@@ -117,13 +117,12 @@ public class UserService {
 
     }
 
-//    @Transactional
+    @Transactional
     public void addFantasyPlayer(Long playerId, Long userId) {
-        User user = userRepository.getUserById(userId).get();
+        User user = userRepository.findById(userId).get();
         Player player = playerService.getPlayerById(playerId);
 
         user.addPlayerToTeam(player);
-
         userRepository.save(user);
     }
 

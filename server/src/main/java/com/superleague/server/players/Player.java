@@ -1,6 +1,7 @@
 package com.superleague.server.players;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.superleague.server.users.User;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Player {
     private int weeklyPoints;
     private String leagueName;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name="fantasyplayers",

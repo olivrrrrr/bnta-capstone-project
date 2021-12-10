@@ -36,8 +36,12 @@ public class User {
         private Integer weeklyPoints;
         private Integer totalPoints;
 
-        @JsonIgnore
-        @ManyToMany(mappedBy = "playersUsers")
+        @ManyToMany
+        @JoinTable(
+                name="fantasyplayers",
+                joinColumns = @JoinColumn(name="user_id"),
+                inverseJoinColumns = @JoinColumn(name="player_id")
+        )
         private Set<Player> team = new HashSet<>();
 
     public Set<Player> getTeam() {
@@ -130,6 +134,7 @@ public class User {
                 ", teamName='" + teamName + '\'' +
                 ", weeklyPoints=" + weeklyPoints +
                 ", totalPoints=" + totalPoints +
+                ", team=" + team +
                 '}';
     }
 
