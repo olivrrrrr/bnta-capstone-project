@@ -148,4 +148,12 @@ public class PlayerService {
     public Player getPlayerById(long id) {
         return playerRepository.findPlayerById(id).get();
     }
+
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
+    }
+
+    public List<Player> findPlayerByPosition(String position) {
+         return playerRepository.findPlayersByPosition(position);
+    }
 }

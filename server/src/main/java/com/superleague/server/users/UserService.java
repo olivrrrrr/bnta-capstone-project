@@ -24,36 +24,29 @@ public class UserService {
         this.playerService = playerService;
     }
 
-    public Optional<User> getUserById(Long id) {
+    public User getUserById(Long id) {
         boolean exists = doesPersonWithIdExists(id);
         if (!exists) {
             throw new IllegalStateException("Account with id " + id + " not found");
         }
-        return userRepository.getUserById(id);
+        return userRepository.findById(id).get();
     }
 
 
-    public Optional<User> getUserByEmail(String email) {
+    public User getUserByEmail(String email) {
         boolean exists = doesPersonWithEmailExists(email);
         if (!exists) {
             throw new IllegalStateException("Account with email " + email + " not found");
         }
-        return userRepository.getUserByEmail(email); }
+        return userRepository.getUserByEmail(email).get();
+    }
 
 
     public void addUser(User user) {
         userRepository.save(user);
         return;
     }
-//
-//    public String updateUser(Long id, User user) {
-//        boolean exists = doesPersonWithIdExists(id);
-//        if (!exists) {
-//            throw new IllegalStateException("Account with id " + id + " not found");
-//     }
-//        this.userRepository.updateUser(id, user);
-//        return "User Details Updated";
-//    }
+
 
     public void deleteUser(Long id) {
         boolean exists = doesPersonWithIdExists(id);
@@ -62,42 +55,92 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
-//
-//    public int getWeeklyPointsById(Long id) {
-//        return userRepository.getWeeklyPointsById(id);
-//         }
-//
-//     public int getWeeklyPointsByTeam(String teamName) {
-//        return userRepository.getWeeklyPointsByTeam(teamName);
-//    }
+
+
+    public void updateAllUserPoints() {
+        //Update all weekly points
+        userRepository.findAll().stream().forEach(user -> this.updateWeeklyPoints(user.getId()));
+        //Update all total points
+        userRepository.findAll().stream().forEach(user -> this.updateTotalPoints(user.getId()));
+    }
+
+    @Transactional
+    public void updateWeeklyPoints(Long id) {
+
+        User user = this.getUserById(id);
+
+        int weeklyPoints = userRepository.getUserById(id).get().getTeam().stream()
+                .reduce(0, (result, player) -> result + player.getWeeklyPoints(), Integer::sum);
+
+        user.setWeeklyPoints(weeklyPoints);
+
+        userRepository.save(user);
+
+    }
+
+    @Transactional
+    public void updateTotalPoints(Long id) {
+
+        User user = this.getUserById(id);
+
+        int totalPoints = userRepository.getUserById(id).get().getTeam().stream()
+                .reduce(0, (result, player) -> result + player.getTotalPoints(), Integer::sum);
+
+        user.setTotalPoints(totalPoints);
+
+        userRepository.save(user);
+
+    }
 
         @Transactional
-    public void updateWeeklyPoints(Long id, Integer weeklyPoints) {
-        User user = getUserById(id).orElseThrow(() ->
-                new ResourceNotFound("user with this id:" + id + " doesn't exist")
-        );
-        user.setWeeklyPoints(weeklyPoints);
-//        userRepository.updateWeeklyPoints(id);
-    }
-        @Transactional
     public void updateEmail(Long id, String email) {
-        User user = getUserById(id).orElseThrow(() ->
-                new ResourceNotFound("user with this id:" + id + " doesn't exist")
-        );
-        if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email))
+        User user = this.getUserById(id);
         user.setEmail(email);
-//        userRepository.updateUser(user.getEmail());
+        userRepository.save(user);
+
+//   EMAIL VALIDATION: (not complete)
+//   if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email)){
     }
         @Transactional
     public void updatePassword(Long id, String password){
-         User user = getUserById(id).orElseThrow(() ->
-                new ResourceNotFound("user with this id:" + id + " doesn't exist")
-        );
-        user.setPassword(password);
-//        userRepository.updateUser(user.getPassword())
+         User user = this.getUserById(id);
+         user.setPassword(password);
+         userRepository.save(user);
     }
 
+    @Transactional
+    public void addFantasyPlayer(Long playerId, Long userId) {
+        User user = this.getUserById(userId);
+        Player player = playerService.getPlayerById(playerId);
 
+        //If the player already exists, throw new exception
+        if(user.findPlayerInTeam(playerId) >= 1) {
+            throw new IllegalStateException("Player already in team");
+        }
+        //If there are too many players from one club
+        if(user.countPlayersFromAClub(player.getTeamName()) >= 2) {
+            throw new IllegalStateException("Too many players from one club");
+        }
+        //If there are too many players from one league
+        if(user.countPlayersFromLeague(player.getLeagueName()) > 3){
+            throw new IllegalStateException("Too many players from the same league");
+        }
+
+        user.addPlayerToTeam(player);
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public void deleteFantasyPlayer(Long playerId, Long userId) {
+        User user = this.getUserById(userId);
+        Player player = playerService.getPlayerById(playerId);
+        if(user.findPlayerInTeam(playerId) == 0)
+        {
+            throw new IllegalStateException("That player isn't in your team you muppet");
+        }
+        user.deletePlayerFromTeam(player);
+        userRepository.save(user);
+    }
 
 
     private boolean doesPersonWithIdExists(long id) {
@@ -113,25 +156,4 @@ public class UserService {
                 .anyMatch(p -> p.getEmail() == email);
     }
 
-    public void updateAllUsers(List<User> userList) {
-
-    }
-
-    @Transactional
-    public void addFantasyPlayer(Long playerId, Long userId) {
-        User user = userRepository.findById(userId).get();
-        Player player = playerService.getPlayerById(playerId);
-
-        user.addPlayerToTeam(player);
-        userRepository.save(user);
-    }
-
-
-//    public int deleteSpell(long id) {
-//
-//        if (!exists) {
-//            throw new IllegalStateException("person with id " + id + " not found");
-//        }
-//        return spellDAO.deleteSpell(id);
-//    }
 }
