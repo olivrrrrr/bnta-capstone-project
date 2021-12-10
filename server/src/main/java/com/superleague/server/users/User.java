@@ -2,7 +2,6 @@
 package com.superleague.server.users;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.superleague.server.players.Player;
 
 import javax.persistence.*;
@@ -70,6 +69,23 @@ public class User {
 
     public void addPlayerToTeam(Player player) {
         team.add(player);
+    }
+    public void deletePlayerFromTeam(Player player) {
+        team.remove(player);}
+
+    public Long findPlayerInTeam(Long playerId) {
+       Long count = team.stream().filter(p -> p.getId() == playerId).count();
+       return count;
+    }
+
+    public Long countPlayersFromAClub(String club) {
+        Long count = team.stream().filter(p -> p.getTeamName() == club).count();
+        return count;
+    }
+    
+    public Long countPlayersFromLeague(String league){
+        Long leaguecount = team.stream().filter(p -> p.getLeagueName() == league).count();
+        return leaguecount;
     }
 
     public Long getId() {

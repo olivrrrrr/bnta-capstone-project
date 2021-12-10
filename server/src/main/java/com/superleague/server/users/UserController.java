@@ -20,51 +20,26 @@ public class UserController{
         }
 
         @GetMapping("id={id}")
-        public Optional<User> getUserById(@PathVariable("id") Long id){
+        public User getUserById(@PathVariable("id") Long id){
 
                 return userService.getUserById(id);
         }
 
         @GetMapping("email={email}")
-        public Optional<User> getUserByEmail(@PathVariable("email") String email){
+        public User getUserByEmail(@PathVariable("email") String email){
         return userService.getUserByEmail(email);
         }
 
-        @PutMapping("player={playerId}/user={userId}")
+        @PutMapping("addPlayer/player={playerId}/user={userId}")
         public void addFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId) {
                 userService.addFantasyPlayer(playerId, userId);
         }
-//
-//        @GetMapping("{id}")
-//        public int getWeeklyPointsById(@PathVariable("id") Long id){
-//            return userService.getWeeklyPointsById(id);
-//        }
-//
-//        @GetMapping("{teamName}")
-//        public int getWeeklyPointsByTeamName(@PathVariable("teamName") String teamName){
-//        return userService.getWeeklyPointsByTeam(teamName);
-//        }
-////
-//        @GetMapping("{id}")
-//         public int getTotalPointsById(@PathVariable("id") Integer id){
-//        return userService.getTotalPoints(id);
-//        }
-//
-//        @GetMapping("{teamName}")
-//        public int getTotalPointsByTeamName(@PathVariable("teamName") String teamName){
-//        return userService.getTotalPoints(teamName);
-//        }
 
         @PostMapping("/addUser")
         public int addUser (@RequestBody User user) {
         userService.addUser(user);
         return 1;
         }
-
-//        @PutMapping("{id}/user")
-//        public void updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-//            userService.updateUser(id, user);
-//        }
 
         @PutMapping("{id}/email")
         public void updateEmail(@PathVariable("id") Long id, String email) {
@@ -76,35 +51,19 @@ public class UserController{
             userService.updatePassword(id, password);
         }
 
-
-
-
-//        @PutMapping("{id}")
-//        public void updateUser(@PathVariable("id") Long id,
-//                                @RequestParam(required = false) String email,
-//                                @RequestParam(required = false) String username,
-//                                @RequestParam(required = false) String password,
-//                                @RequestParam(required = false) String teamName) {
-//            // handle nulls in logic
-//            userService.updateUser(
-//                    id,
-//                    email,
-//                    username,
-//                    password,
-//                    teamName
-//                    );
-//        }
-
         @PutMapping
-        public void updateAllUsers (List<User> userList) {
-
-                userService.updateAllUsers(userList);
-
+        public void updateAllUsers () {
+                userService.updateAllUserPoints();
         }
 
         @DeleteMapping
         public void deleteUser(@PathVariable("id") Long id){
             userService.deleteUser(id);
+        }
+
+        @PutMapping("deletePlayer/player={playerId}/user={userId")
+        public void deleteFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId){
+                userService.deleteFantasyPlayer(playerId, userId);
         }
 
 }
