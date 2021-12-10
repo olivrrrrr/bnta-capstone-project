@@ -13,7 +13,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Optional<Player> findPlayerById(Long playerID);
 
-    @Query("SELECT s FROM players s WHERE s.position = ?1")
-    List<Player> findPlayersByPosition(String position);
+//    @Query("SELECT s FROM players s WHERE s.position = ?1")
+//    List<Player> findPlayersByPosition(String position);
 
 }

@@ -7,8 +7,9 @@ import { postAllPlayers, updateAllPlayers } from '../adaptors/BackendAdapter'
 function AdminPage() {
 
     const [players, setPlayers] = useState([]);
-    const leagues = [39, 78]
-    const pages = [3, 3]
+    // prem, bunds, seriaa, ligue1, laliga
+    const leagues = [39, 78, 135, 61, 140]
+    const pages = [36, 33, 44, 40, 35]
 
     useEffect(() => {
         // getAllPlayersPrem();
