@@ -10,18 +10,17 @@ const headers = {
 }
 
 
-function fetchPlayerData(league, season, page) {
+function fetchPlayerData(league, page) {
 
     const query = {
         "league" : league,
-        "season" : season,
         "page"   : page,
     }
 
     let playerList = [];
 
     return (
-        axios.get("https://api-football-v1.p.rapidapi.com/v3/players?league=61&season=2021", {
+        axios.get(`https://api-football-v1.p.rapidapi.com/v3/players?league=${league}&season=2021&page=${page}`, {
             headers: {
                 "x-rapidapi-host":  "api-football-v1.p.rapidapi.com",
                 "x-rapidapi-key" : "8a15d1d999mshb785661a047bb68p19f301jsnc6e23033d15e",
@@ -33,7 +32,7 @@ function fetchPlayerData(league, season, page) {
                 //for each player, create new instance of the player and push to player list/array
                 //Return list of players (post request in adminPage)
                 result => {
-                    console.log(result.data.response)
+                    //console.log(result.data.response)
                     result.data.response.forEach(player => {
                         const playerObject = new Player(player.player.id,
                             player.player.name,
