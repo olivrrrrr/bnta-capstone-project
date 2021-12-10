@@ -61,7 +61,7 @@ public class UserController{
             userService.deleteUser(id);
         }
 
-        @PutMapping("deletePlayer/player={playerId}/user={userId")
+        @PutMapping("deletePlayer/player={playerId}/user={userId}")
         public void deleteFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId){
                 userService.deleteFantasyPlayer(playerId, userId);
         }
