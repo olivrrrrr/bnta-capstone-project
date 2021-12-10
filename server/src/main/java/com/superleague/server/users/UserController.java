@@ -20,17 +20,17 @@ public class UserController{
         }
 
         @GetMapping("id={id}")
-        public Optional<User> getUserById(@PathVariable("id") Long id){
+        public User getUserById(@PathVariable("id") Long id){
 
                 return userService.getUserById(id);
         }
 
         @GetMapping("email={email}")
-        public Optional<User> getUserByEmail(@PathVariable("email") String email){
+        public User getUserByEmail(@PathVariable("email") String email){
         return userService.getUserByEmail(email);
         }
 
-        @PutMapping("player={playerId}/user={userId}")
+        @PutMapping("addPlayer/player={playerId}/user={userId}")
         public void addFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId) {
                 userService.addFantasyPlayer(playerId, userId);
         }
@@ -51,25 +51,6 @@ public class UserController{
             userService.updatePassword(id, password);
         }
 
-
-
-
-//        @PutMapping("{id}")
-//        public void updateUser(@PathVariable("id") Long id,
-//                                @RequestParam(required = false) String email,
-//                                @RequestParam(required = false) String username,
-//                                @RequestParam(required = false) String password,
-//                                @RequestParam(required = false) String teamName) {
-//            // handle nulls in logic
-//            userService.updateUser(
-//                    id,
-//                    email,
-//                    username,
-//                    password,
-//                    teamName
-//                    );
-//        }
-
         @PutMapping
         public void updateAllUsers () {
                 userService.updateAllUserPoints();
@@ -78,6 +59,11 @@ public class UserController{
         @DeleteMapping
         public void deleteUser(@PathVariable("id") Long id){
             userService.deleteUser(id);
+        }
+
+        @PutMapping("deletePlayer/player={playerId}/user={userId")
+        public void deleteFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId){
+                userService.deleteFantasyPlayer(playerId, userId);
         }
 
 }
