@@ -34,37 +34,12 @@ public class UserController{
         public void addFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId) {
                 userService.addFantasyPlayer(playerId, userId);
         }
-//
-//        @GetMapping("{id}")
-//        public int getWeeklyPointsById(@PathVariable("id") Long id){
-//            return userService.getWeeklyPointsById(id);
-//        }
-//
-//        @GetMapping("{teamName}")
-//        public int getWeeklyPointsByTeamName(@PathVariable("teamName") String teamName){
-//        return userService.getWeeklyPointsByTeam(teamName);
-//        }
-////
-//        @GetMapping("{id}")
-//         public int getTotalPointsById(@PathVariable("id") Integer id){
-//        return userService.getTotalPoints(id);
-//        }
-//
-//        @GetMapping("{teamName}")
-//        public int getTotalPointsByTeamName(@PathVariable("teamName") String teamName){
-//        return userService.getTotalPoints(teamName);
-//        }
 
         @PostMapping("/addUser")
         public int addUser (@RequestBody User user) {
         userService.addUser(user);
         return 1;
         }
-
-//        @PutMapping("{id}/user")
-//        public void updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-//            userService.updateUser(id, user);
-//        }
 
         @PutMapping("{id}/email")
         public void updateEmail(@PathVariable("id") Long id, String email) {
@@ -96,10 +71,8 @@ public class UserController{
 //        }
 
         @PutMapping
-        public void updateAllUsers (List<User> userList) {
-
-                userService.updateAllUsers(userList);
-
+        public void updateAllUsers () {
+                userService.updateAllUserPoints();
         }
 
         @DeleteMapping

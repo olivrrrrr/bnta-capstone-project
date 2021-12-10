@@ -71,22 +71,42 @@ public class UserService {
 //        return userRepository.getWeeklyPointsByTeam(teamName);
 //    }
 
-        @Transactional
-    public void updateWeeklyPoints(Long id, Integer weeklyPoints) {
-        User user = getUserById(id).orElseThrow(() ->
-                new ResourceNotFound("user with this id:" + id + " doesn't exist")
-        );
+    @Transactional
+    public void updateWeeklyPoints(Long id) {
+
+        User user = this.getUserById(id);
+
+        int weeklyPoints = userRepository.getUserById(id).get().getTeam().stream()
+                .reduce(0, (result, player) -> result + player.getWeeklyPoints(), Integer::sum);
+
         user.setWeeklyPoints(weeklyPoints);
-//        userRepository.updateWeeklyPoints(id);
+
+        userRepository.save(user);
+
     }
+
+    @Transactional
+    public void updateTotalPoints(Long id) {
+
+        User user = this.getUserById(id);
+
+        int totalPoints = userRepository.getUserById(id).get().getTeam().stream()
+                .reduce(0, (result, player) -> result + player.getTotalPoints(), Integer::sum);
+
+        user.setTotalPoints(totalPoints);
+
+        userRepository.save(user);
+
+    }
+
         @Transactional
     public void updateEmail(Long id, String email) {
-        User user = getUserById(id).orElseThrow(() ->
-                new ResourceNotFound("user with this id:" + id + " doesn't exist")
-        );
-        if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email))
+        User user = this.getUserById(id);
         user.setEmail(email);
-//        userRepository.updateUser(user.getEmail());
+        userRepository.save(user);
+
+//   EMAIL VALIDATION: (not complete)
+//   if (email != null && email.length() > 0 && !Objects.equals(user.getEmail(), email)){
     }
         @Transactional
     public void updatePassword(Long id, String password){

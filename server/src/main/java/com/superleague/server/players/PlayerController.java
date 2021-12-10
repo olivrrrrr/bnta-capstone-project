@@ -17,22 +17,12 @@ import java.util.List;
     @Autowired
     public PlayerController(PlayerService playerService) {this.playerService = playerService; }
 
-/*    @PostMapping("addOne")
-    public int addPlayer (@RequestBody Player player) {
-        playerService.addPlayer(player);
-        return 1;
-    }*/
 
     @PostMapping("addMany")
     public int addManyPlayers (@RequestBody List<Player> players) {
         playerService.addPlayers(players);
         return 1;
     }
-
-//    @GetMapping("{id}")
-//    public Player getPlayer(){
-//
-//    }
 
 
     @PutMapping("updateAllPlayers")
