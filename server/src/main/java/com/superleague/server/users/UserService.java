@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -156,4 +157,12 @@ public class UserService {
                 .anyMatch(p -> p.getEmail() == email);
     }
 
+    @Transactional
+    public void saveTeam(Set<Player> team, long userId) {
+        User user = this.getUserById(userId);
+
+        user.setTeam(team);
+        userRepository.save(user);
+
+    }
 }

@@ -153,7 +153,7 @@ public class PlayerService {
         return playerRepository.findAll();
     }
 
-//    public List<Player> findPlayerByPosition(String position) {
-//         return playerRepository.findPlayersByPosition(position);
-//    }
+    public List<Player> findPlayerByPosition(String position) {
+         return playerRepository.findPlayersByPosition(position);
+    }
 }
