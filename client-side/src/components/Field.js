@@ -7,7 +7,7 @@ function Field() {
 
     useEffect(()=>{
         fetch("http://localhost:8080/api/v1/players/allPlayer")
-        .then(resp=>resp)
+        .then(resp=>resp.json())
         .then(data=>setPlayers(data))
     },[])
 
@@ -17,8 +17,14 @@ function Field() {
         FWD: ["Oli","Anand"], 
         MID: ["Luke","Rashid","Yonis", "Ronaldo"], 
         DEF: [null,null,null, null], 
-        GK:  [null]
+        GK:  [null],
     }
+
+
+    // Teams: [],
+    // Leagues: []
+
+     
 
     return (
         <div> 
