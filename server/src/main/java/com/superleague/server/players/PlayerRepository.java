@@ -14,7 +14,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
 
     Optional<Player> findPlayerById(Long playerID);
 
-    @Query("SELECT s FROM players s WHERE s.position = :position")
+    @Query("SELECT s FROM Player s WHERE s.position = :position")
     List<Player> findPlayersByPosition(@Param("position") String position);
 
 }
