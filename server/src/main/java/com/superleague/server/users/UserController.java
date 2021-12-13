@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -64,6 +65,11 @@ public class UserController{
         @PutMapping("deletePlayer/player={playerId}/user={userId}")
         public void deleteFantasyPlayer(@PathVariable("playerId") Long playerId, @PathVariable("userId") Long userId){
                 userService.deleteFantasyPlayer(playerId, userId);
+        }
+
+        @PutMapping("saveTeam/user={id}")
+        public void saveFantasyTeam(@RequestBody Set<Player> team, @PathVariable("id") long userId) {
+                userService.saveTeam(team, userId);
         }
 
 }

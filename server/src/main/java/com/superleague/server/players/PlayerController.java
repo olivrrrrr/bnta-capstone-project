@@ -51,10 +51,10 @@ import java.util.List;
         return playerService.getAllPlayers();
     }
 
-//    @GetMapping("/playersByPosition/position={p}")
-//    public List<Player> addPlayersByPosition(@PathVariable("p") String position) {
-//        return playerService.findPlayerByPosition(position);
-//    }
+    @GetMapping("/playersByPosition/position={p}")
+    public List<Player> addPlayersByPosition(@PathVariable("p") String position) {
+        return playerService.findPlayerByPosition(position);
+    }
 
 
 }
