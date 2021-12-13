@@ -1,0 +1,145 @@
+Index: .idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_6_0.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_6_0.xml b/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_6_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_6_0.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.security:spring-security-crypto:5.6.0">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-crypto/5.6.0/spring-security-crypto-5.6.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-crypto/5.6.0/spring-security-crypto-5.6.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-crypto/5.6.0/spring-security-crypto-5.6.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_security_spring_security_web_5_6_0.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_6_0.xml b/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_6_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_6_0.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.security:spring-security-web:5.6.0">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.6.0/spring-security-web-5.6.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.6.0/spring-security-web-5.6.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.6.0/spring-security-web-5.6.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_security_spring_security_test_5_6_0.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_6_0.xml b/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_6_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_6_0.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.security:spring-security-test:5.6.0">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-test/5.6.0/spring-security-test-5.6.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-test/5.6.0/spring-security-test-5.6.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-test/5.6.0/spring-security-test-5.6.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml b/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_6_1.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.boot:spring-boot-starter-security:2.6.1">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-security/2.6.1/spring-boot-starter-security-2.6.1.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-security/2.6.1/spring-boot-starter-security-2.6.1-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-security/2.6.1/spring-boot-starter-security-2.6.1-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml b/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_0.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.security:spring-security-config:5.6.0">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.6.0/spring-security-config-5.6.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.6.0/spring-security-config-5.6.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/5.6.0/spring-security-config-5.6.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_security_spring_security_core_5_6_0.xml
+===================================================================
+diff --git a/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_6_0.xml b/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_6_0.xml
+deleted file mode 100644
+--- a/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_6_0.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ /dev/null	(revision 949308211d497bc4d1981bd85015231f376666b9)
+@@ -1,13 +0,0 @@
+-<component name="libraryTable">
+-  <library name="Maven: org.springframework.security:spring-security-core:5.6.0">
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.6.0/spring-security-core-5.6.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.6.0/spring-security-core-5.6.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.6.0/spring-security-core-5.6.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <annotationProcessing>\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\n        <outputRelativeToContentRoot value=\"true\" />\n        <module name=\"server\" />\n      </profile>\n    </annotationProcessing>\n    <bytecodeTargetLevel>\n      <module name=\"server\" target=\"17\" />\n    </bytecodeTargetLevel>\n  </component>\n  <component name=\"JavacSettings\">\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\n      <module name=\"server\" options=\"-parameters\" />\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 949308211d497bc4d1981bd85015231f376666b9)
++++ b/.idea/compiler.xml	(date 1639056833487)
+@@ -10,7 +10,7 @@
+       </profile>
+     </annotationProcessing>
+     <bytecodeTargetLevel>
+-      <module name="server" target="17" />
++      <module name="server" target="16" />
+     </bytecodeTargetLevel>
+   </component>
+   <component name="JavacSettings">

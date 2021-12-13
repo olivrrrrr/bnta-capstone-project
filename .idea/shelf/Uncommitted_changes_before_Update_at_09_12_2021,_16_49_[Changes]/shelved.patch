@@ -1,0 +1,36 @@
+Index: server/src/main/java/com/superleague/server/users/UserRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.superleague.server.users;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Query;\nimport org.springframework.stereotype.Repository;\n\nimport java.util.List;\nimport java.util.Optional;\n\n@Repository (\"Users\")\npublic interface UserRepository extends JpaRepository<User, Long> {\n\n\n//    @Query(\"SELECT s FROM Student s WHERE s.email = ?1\")\n//    Optional<Student> findStudentByEmail(String email);\n//\n//    @Query(\"SELECT s FROM Student s WHERE s.id = ?1\")\n//    Optional<Student> findStudentByID(Long StudentId);\n\n    Optional<User> getUserById(Long id);\n\n    Optional<User> getUserByEmail(String email);\n\n    void addUser(User user);\n\n    void updateUser(Long id, User user);\n\n    @Query(\"DELETE FROM users WHERE id = ?;\")\n    Optional<User> deleteUser(Long id);\n\n    int getWeeklyPointsById(Long id);\n\n    int getWeeklyPointsByTeam(String teamName);\n\n\n    void setEmail(String email);\n\n    void updateWeeklyPoints(Long id);\n}\n  \n  \n  \n    // User methods/logic\n//    Optional <User> findUserById\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/server/src/main/java/com/superleague/server/users/UserRepository.java b/server/src/main/java/com/superleague/server/users/UserRepository.java
+--- a/server/src/main/java/com/superleague/server/users/UserRepository.java	(revision 5dc69b5db1ccbe0d7ebea13add52793d9c46b863)
++++ b/server/src/main/java/com/superleague/server/users/UserRepository.java	(date 1639059955057)
+@@ -7,7 +7,7 @@
+ import java.util.List;
+ import java.util.Optional;
+ 
+-@Repository ("Users")
++@Repository ("users")
+ public interface UserRepository extends JpaRepository<User, Long> {
+ 
+ 
+Index: server/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.datasource.url=jdbc:postgresql://localhost:5432/superleague\nspring.datasource.username=yonis\nspring.datasource.password=\nspring.jpa.hibernate.ddl-auto=update\nspring.jpa.show-sql=true\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect\nspring.jpa.properties.hibernate.format_sql=true\nserver.error.include-message=always
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/server/src/main/resources/application.properties b/server/src/main/resources/application.properties
+--- a/server/src/main/resources/application.properties	(revision 5dc69b5db1ccbe0d7ebea13add52793d9c46b863)
++++ b/server/src/main/resources/application.properties	(date 1639059955133)
+@@ -1,5 +1,5 @@
+ spring.datasource.url=jdbc:postgresql://localhost:5432/superleague
+-spring.datasource.username=yonis
++spring.datasource.username=lukefowles
+ spring.datasource.password=
+ spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.show-sql=true
