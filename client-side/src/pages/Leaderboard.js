@@ -1,30 +1,45 @@
 import {React, useEffect,useState} from 'react'; 
 import { getLeaderboard } from '../adaptors/BackendAdapter';
+import './Leaderboard.css'
+import Table from 'react-bootstrap/Table'
+
 
 function Leaderboard() {
    
 
-   const [leaderboard, setLeaderboard] = useState([]) 
+   const [leaderboard, setLeaderboard] = useState(['']) 
 
    useEffect(()=>{
         getLeaderboard().then(resp=> setLeaderboard(resp)) 
    },[])
 
-    // console.log(leaderboard)
+     console.log(leaderboard)
    
     return (
         
         leaderboard ?
 
-        <div>
-            {leaderboard.map(user =>{
-                <div>
-                    <p>hello</p>
-                    <p>{user.username}</p>
-                    <p>{user.teamName}</p>
-                    <p>{user.totalPoints}</p>
-                </div>
-            })}
+        <div style={{marginTop:"7em"}}>
+               <Table  striped bordered hover responsive>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Team Name</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {leaderboard.map((user, i) => 
+                        <tr>
+                            <td>{i+1}</td>
+                            <td>{user.username}</td>
+                            <td>{user.teamName}</td>
+                            <td>{user.totalPoints}</td>
+                        </tr>
+            )}
+            </tbody>
+            </Table>
         </div>
 
     : 
