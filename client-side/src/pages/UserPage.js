@@ -28,8 +28,8 @@ function UserPage() {
     const [pitch, setPitch] = useState(emptyPitch);
 
     useEffect(() => {
-        getAllPlayers()
-            .then(response => setPlayers(response))
+        // getAllPlayers()
+        //     .then(response => setPlayers(response))
         getTeam(1)
             .then(response => {
                 if (response)
@@ -70,11 +70,17 @@ function UserPage() {
                 else if (player.position === 'Defender') {
                     const index = pitch.position.DEF.indexOf(null)
                     if (index != -1){
-                    setPitch(pitch => {
-                        pitch.position.DEF[index] = player
-                        pitch.Clubs[`${player.teamName}`] = 1;
-                        pitch.Leagues[`${player.leagueName}`] += 1
-                    })}
+                        let tempPitch = pitch
+                        tempPitch.position.DEF[index] = player
+                        tempPitch.Clubs[`${player.teamName}`] = 1;
+                        tempPitch.Leagues[`${player.leagueName}`] += 1
+                        console.log(tempPitch)
+                    setPitch(
+                        tempPitch
+                        // pitch.position.DEF[index] = player
+                        // pitch.Clubs[`${player.teamName}`] = 1;
+                        // pitch.Leagues[`${player.leagueName}`] += 1
+                    )}
                 }
                 else if (player.position === 'Goalkeeper') {
                     const index = pitch.position.GK.indexOf(null)
