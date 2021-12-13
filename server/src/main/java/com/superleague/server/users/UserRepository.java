@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> getUserByEmail(String email);
 
-    @Query("SELECT u from User GROUP BY u.totalPoints desc")
+    @Query("SELECT u from User u ORDER BY u.totalPoints desc")
     List<User> getLeaderboard();
 
 

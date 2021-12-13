@@ -1,17 +1,35 @@
-import React from 'react'
+import {React, useEffect,useState} from 'react'; 
+import { getLeaderboard } from '../adaptors/BackendAdapter';
 
 function Leaderboard() {
    
-   useEffect()
-   
-   
-   
-   
+
+   const [leaderboard, setLeaderboard] = useState([]) 
+
+   useEffect(()=>{
+        getLeaderboard().then(resp=> setLeaderboard(resp)) 
+   },[])
+
+    // console.log(leaderboard)
    
     return (
+        
+        leaderboard ?
+
         <div>
-            <p>hello</p>
+            {leaderboard.map(user =>{
+                <div>
+                    <p>hello</p>
+                    <p>{user.username}</p>
+                    <p>{user.teamName}</p>
+                    <p>{user.totalPoints}</p>
+                </div>
+            })}
         </div>
+
+    : 
+
+    <p>Loading...</p>
     )
 }
 
