@@ -1,17 +1,18 @@
 import React from 'react'
 import {useState, useEffect} from  'react'
-import {getAllPlayers, getTeam} from '../adaptors/BackendAdapter'
+import {getAllPlayers, getTeam, getUser} from '../adaptors/BackendAdapter'
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
+
 
 function UserPage() {
 
     const emptyPitch = {
-        Position: {
-            FWD: ['Benteke', 'Benteke'],
-            MID: ['Benteke','Benteke','Benteke','Benteke'],
-            DEF: ['Benteke','Benteke','Benteke','Benteke'],
-            GK: ['Benteke']
+        position: {
+            FWD: [null, null],
+            MID: [null, null, null, null],
+            DEF: [null, null, null, null],
+            GK: [null]
         },
         Clubs: {},
         Leagues: {
@@ -40,38 +41,49 @@ function UserPage() {
     }, [])
 
 
+
     const loadPlayer = (player) => {
+
+        // console.log(player)
 
         if (!pitch.Clubs[`${player.teamName}`]) {
             // pitch.Clubs[`${player.teamName}` = 1]
             if (pitch.Leagues[`${player.leagueName}`] < 3) {
-                if (player.position === 'Attacker' && pitch.FWD.length < 2) {
+                if (player.position === 'Attacker' ) {
+                    const index = pitch.position.FWD.indexOf(null)
+                    if (index !== -1) {
                     setPitch(pitch => {
-                        pitch.FWD.push(player)
+                        pitch.position.FWD[index] = player
                         pitch.Clubs[`${player.teamName}`] = 1;
                         pitch.Leagues[`${player.leagueName}`] += 1
-                    })
+                    })}
                 }
-                else if (player.position === 'Midfielder' && pitch.MID.length < 4) {
+                else if (player.position === 'Midfielder') {
+                    const index = pitch.position.MID.indexOf(null)
+                    if (index != -1) {
                     setPitch(pitch => {
-                        pitch.MID.push(player)
+                        pitch.position.MID[index] = player
                         pitch.Clubs[`${player.teamName}`] = 1;
                         pitch.Leagues[`${player.leagueName}`] += 1
-                    })
+                    })}
                 }
-                else if (player.position === 'Defender' && pitch.DEF.length < 4) {
+                else if (player.position === 'Defender') {
+                    const index = pitch.position.DEF.indexOf(null)
+                    if (index != -1){
                     setPitch(pitch => {
-                        pitch.DEF.push(player)
+                        pitch.position.DEF[index] = player
                         pitch.Clubs[`${player.teamName}`] = 1;
                         pitch.Leagues[`${player.leagueName}`] += 1
-                    })
+                    })}
                 }
-                else if (player.position === 'Goalkeeper' && pitch.GK.length < 1) {
+                else if (player.position === 'Goalkeeper') {
+                    const index = pitch.position.GK.indexOf(null)
+                    if (index != -1){
                     setPitch(pitch => {
-                        pitch.GK.push(player)
+                        pitch.position.GK[index] = player
                         pitch.Clubs[`${player.teamName}`] = 1;
                         pitch.Leagues[`${player.leagueName}`] += 1
-                    })
+                    })}
                 }
                 else {
                     alert(`Too many ${player.position}s`)
@@ -87,15 +99,23 @@ function UserPage() {
     }
 
     console.log(pitch);
+    // getTeam(1).then(response => console.log(response));
 
     return (
 
+            pitch
+
+            ?
 
             <div>
                 <Field pitch={pitch} />
                 {/* <PlayerSelector players={players} /> */}
             </div>
 
+
+            :
+
+            <p>loading...</p>
     )
 }
 

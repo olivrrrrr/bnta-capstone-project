@@ -25,8 +25,14 @@ const getAllPlayers = () => {
 
 const getTeam = (id) => {
     return axios.get(`http://localhost:8080/api/v1/users/id=${id}`)
-    .then(response => response.team);
+    .then(response => response.data.team);
+}
+
+const getUser = (id) => {
+    return axios.get(`http://localhost:8080/api/v1/users/id=${id}`)
+    // .then(response => response.team);
+    
 }
 
 
-export {postAllPlayers, updateAllPlayers, getAllPlayers, getTeam}
+export {postAllPlayers, updateAllPlayers, getAllPlayers, getTeam, getUser}
