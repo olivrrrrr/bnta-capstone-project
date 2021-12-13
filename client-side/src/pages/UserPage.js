@@ -51,45 +51,47 @@ function UserPage() {
             if (pitch.Leagues[`${player.leagueName}`] < 3) {
                 if (player.position === 'Attacker' ) {
                     const index = pitch.position.FWD.indexOf(null)
-                    if (index !== -1) {
-                    setPitch(pitch => {
-                        pitch.position.FWD[index] = player
-                        pitch.Clubs[`${player.teamName}`] = 1;
-                        pitch.Leagues[`${player.leagueName}`] += 1
-                    })}
+                    if (index !== -1){
+                        let tempPitch = pitch
+                        tempPitch.position.FWD[index] = player
+                        tempPitch.Clubs[`${player.teamName}`] = 1;
+                        tempPitch.Leagues[`${player.leagueName}`] += 1
+                    setPitch(
+                        tempPitch
+                    )}
                 }
                 else if (player.position === 'Midfielder') {
                     const index = pitch.position.MID.indexOf(null)
-                    if (index != -1) {
-                    setPitch(pitch => {
-                        pitch.position.MID[index] = player
-                        pitch.Clubs[`${player.teamName}`] = 1;
-                        pitch.Leagues[`${player.leagueName}`] += 1
-                    })}
+                    if (index !== -1){
+                        let tempPitch = pitch
+                        tempPitch.position.MID[index] = player
+                        tempPitch.Clubs[`${player.teamName}`] = 1;
+                        tempPitch.Leagues[`${player.leagueName}`] += 1
+                    setPitch(
+                        tempPitch
+                    )}
                 }
                 else if (player.position === 'Defender') {
                     const index = pitch.position.DEF.indexOf(null)
-                    if (index != -1){
+                    if (index !== -1){
                         let tempPitch = pitch
                         tempPitch.position.DEF[index] = player
                         tempPitch.Clubs[`${player.teamName}`] = 1;
                         tempPitch.Leagues[`${player.leagueName}`] += 1
-                        console.log(tempPitch)
                     setPitch(
                         tempPitch
-                        // pitch.position.DEF[index] = player
-                        // pitch.Clubs[`${player.teamName}`] = 1;
-                        // pitch.Leagues[`${player.leagueName}`] += 1
                     )}
                 }
                 else if (player.position === 'Goalkeeper') {
                     const index = pitch.position.GK.indexOf(null)
-                    if (index != -1){
-                    setPitch(pitch => {
-                        pitch.position.GK[index] = player
-                        pitch.Clubs[`${player.teamName}`] = 1;
-                        pitch.Leagues[`${player.leagueName}`] += 1
-                    })}
+                    if (index !== -1){
+                        let tempPitch = pitch
+                        tempPitch.position.GK[index] = player
+                        tempPitch.Clubs[`${player.teamName}`] = 1;
+                        tempPitch.Leagues[`${player.leagueName}`] += 1
+                    setPitch(
+                        tempPitch
+                    )}
                 }
                 else {
                     alert(`Too many ${player.position}s`)
@@ -104,8 +106,9 @@ function UserPage() {
         }
     }
 
-    console.log(pitch);
+    
     // getTeam(1).then(response => console.log(response));
+
 
     return (
 
