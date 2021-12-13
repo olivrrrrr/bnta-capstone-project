@@ -72,4 +72,9 @@ public class UserController{
                 userService.saveTeam(team, userId);
         }
 
+        @GetMapping("leaderboard")
+        public List<User> getLeaderboard() {
+                return userService.getLeaderboard();
+        }
+
 }
