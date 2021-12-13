@@ -18,5 +18,21 @@ const updateAllPlayers = (players) => {
     )
 }
 
+const getAllPlayers = () => {
+    return axios.get("http://localhost:8080/api/v1/players/allPlayer")
+    .catch(e => {console.log(e)});
+}
 
-export {postAllPlayers, updateAllPlayers}
+const getTeam = (id) => {
+    return axios.get(`http://localhost:8080/api/v1/users/id=${id}`)
+    .then(response => response.data.team);
+}
+
+const getUser = (id) => {
+    return axios.get(`http://localhost:8080/api/v1/users/id=${id}`)
+    // .then(response => response.team);
+    
+}
+
+
+export {postAllPlayers, updateAllPlayers, getAllPlayers, getTeam, getUser}
