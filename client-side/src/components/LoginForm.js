@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import bcrypt from 'bcryptjs'
+
+//https://medium.com/boca-code/how-to-encrypt-password-in-your-react-app-before-you-send-it-to-the-api-6e10a06f0a8e
+const salt = bcrypt.genSaltSync(10);
 
 function LoginForm({onLoginFormSubmit}) {
 
@@ -16,7 +20,11 @@ function LoginForm({onLoginFormSubmit}) {
     const handleFormSubmission = (event) => {
         event.preventDefault();
 
-        onLoginFormSubmit(identity, password);
+        const hashedPassword = bcrypt.hashSync(password, salt)
+
+        console.log(hashedPassword)
+
+        onLoginFormSubmit(identity, hashedPassword);
 
         setIdentity("")
         setPassword("")

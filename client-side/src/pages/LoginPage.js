@@ -12,7 +12,6 @@ function LoginPage({ setData }) {
 
         axios.get(`http://localhost:8080/api/v1/users/email=${email}`)
             .then(user => {
-                console.log(user.data.password);
                 if (password === user.data.password) {
                     setData(user.data.id)
                     navigate("/userpage")
@@ -26,16 +25,14 @@ function LoginPage({ setData }) {
 
     const onRegisterFormSubmit = (user) => {
         axios.post("http://localhost:8080/api/v1/users/addUser", user)
-            .then(
-                axios.get(`http://localhost:8080/api/v1/users/email=${user.email}`)
-                    .then(response => {
+          .then(() => axios.get(`http://localhost:8080/api/v1/users/email=${user.email}`))
+          .then(response => {
                         setData(response.data.id)
                         navigate("/userpage")
                     }
-                    )
-            )
-            .catch(() => alert('error adding user'))
-    }
+                )
+            .catch(() => alert('error adding user')) 
+            }
 
     return (
 

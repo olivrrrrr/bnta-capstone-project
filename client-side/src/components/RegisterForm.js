@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import bcrypt from 'bcryptjs'
+
+//https://medium.com/boca-code/how-to-encrypt-password-in-your-react-app-before-you-send-it-to-the-api-6e10a06f0a8e
+const salt = bcrypt.genSaltSync(10);
 
 function RegisterForm({onRegisterFormSubmit}) {
     const [email, setEmail] = useState("");
@@ -25,9 +29,11 @@ function RegisterForm({onRegisterFormSubmit}) {
     const handleFormSubmission = (event) => {
         event.preventDefault();
 
+        const hashedPassword = bcrypt.hashSync(password, salt)
+
         const newUser = {
             email: email,
-            password: password,
+            password: hashedPassword,
             username: userName,
             teamName: teamName
         }
