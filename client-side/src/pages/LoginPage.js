@@ -21,7 +21,7 @@ function LoginPage({setData}) {
                     alert('incorrect email or password.')
                 }
             })
-            // .catch(err => alert('user with this email does not exist'))
+            .catch(err => alert('user with this email does not exist'))
     } 
 
     return (
