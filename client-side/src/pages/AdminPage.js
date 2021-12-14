@@ -32,10 +32,6 @@ function AdminPage() {
     useEffect(() => console.log(players), [players])
 
 
-    // useEffect(() => {
-    //     getAllPlayersBundesliga();
-    // }, [])
-
     const postPlayersToDb = () => {
         postAllPlayers(players)
 
@@ -45,19 +41,7 @@ function AdminPage() {
         updateAllPlayers(players)
     }
 
-    // const getAllFromLeague = (theLeague, noPages) => {
-    //     const league = theLeague
-    //     const pages = noPages
-    //     for (let i = 1; i <= pages; i++) {
-    //         fetchPlayerData(league, i)
-    //             .then(response => {
-    //                 // console.log(response);
-    //                 setPlayers(players => players.concat(response));
-    //                 //console.log(players)
-    //                 return players
-    //             })
-    //     }
-    // }
+
 
     const getAllFromLeague = () => {
         // prem, bunds, seriaa, ligue1, laliga
@@ -78,45 +62,7 @@ function AdminPage() {
         }
     }
 
-    // const getAllPlayersPrem = () => {
-    //     const league = 39
-    //     const pages = 3
-    //     for (let i = 1; i <= pages; i++) {
-    //         fetchPlayerData(league, i)
-    //             .then(response => {
-    //                 setPlayers(players.concat(response))
-    //                 return players
-    //             })
-    //     }
-    // }
 
-    // // console.log(players);
-
-
-    // const getAllPlayersBundesliga = () => {
-    //     const league = 78
-    //     const pages = 3
-    //     for (let i = 1; i <= pages; i++) {
-    //         fetchPlayerData(league, i)
-    //             .then(response => {
-    //                 setPlayers(players.concat(response))
-    //                 return players
-    //             })
-    //     }
-    // }
-
-
-    // const getAllPlayersPrem = () => {
-    //     const league = 39
-    //     const pages = 3
-    //     for (let i=1 ; i<=pages ; i++){
-    //         fetchPlayerData(league, i)
-    //         .then(response =>{ 
-    //             setPlayers(players.concat(response)) 
-    //             return players
-    //             })
-    //     }
-    // }
 
     return (
 
