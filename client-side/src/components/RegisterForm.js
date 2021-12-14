@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import bcrypt from 'bcryptjs'
+import '../styles/LoginForm.css'
 
 //https://medium.com/boca-code/how-to-encrypt-password-in-your-react-app-before-you-send-it-to-the-api-6e10a06f0a8e
 const salt = bcrypt.genSaltSync(10);
@@ -54,23 +55,23 @@ function RegisterForm({onRegisterFormSubmit}) {
                     <label htmlFor="email">Email:</label>
                     <input type="text" id="email" value={email} onChange={handleEmailChange} />
                 </div>
-                <div className="formElement">
+                <div className="form-element">
                     <label htmlFor="password">Password: </label>
                     <input type="password" id="password" value={password}
                         onChange={handlePasswordChange} />
                 </div>
-                <div className="formElement">
+                <div className="form-element">
                     <label htmlFor="userName">Username: </label>
                     <input type="text" id="userName" value={userName}
                         onChange={handleUserNameChange} />
                 </div>
-                <div className="formElement">
+                <div className="form-element">
                     <label htmlFor="teamName">Team name: </label>
                     <input type="text" id="teamName" value={teamName}
                         onChange={handleTeamNameChange} />
                 </div>
-                <div className="formElement">
-                    <input type="submit" value="Sign in"/>
+                <div className="submit-button">
+                    <input type="submit" value="Register"/>
                 </div>
             </form>
         </div>

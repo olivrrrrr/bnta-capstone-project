@@ -3,6 +3,7 @@ import React from 'react'
 import LoginForm from '../components/LoginForm.js'
 import RegisterForm from '../components/RegisterForm.js'
 import { useNavigate } from 'react-router-dom'
+import '../styles/LoginPage.css'
 
 function LoginPage({ setData }) {
 
@@ -36,7 +37,7 @@ function LoginPage({ setData }) {
 
     return (
 
-        <div>
+        <div className="login-page">
             <LoginForm onLoginFormSubmit={onLoginFormSubmit}></LoginForm>
             <RegisterForm onRegisterFormSubmit={onRegisterFormSubmit}></RegisterForm>
         </div>

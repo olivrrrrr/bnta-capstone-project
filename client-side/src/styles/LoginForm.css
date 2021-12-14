@@ -1,0 +1,23 @@
+.login-display {
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 1em;
+    height: 35%;
+    background-color: white;
+}
+
+.form-element {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0.5em;
+}
+
+.form-element > label{
+    display: flex;
+    width: 35%;
+}
+
+.form-element > input{
+    display: flex;
+    width: 65%;
+}
