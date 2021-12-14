@@ -23,8 +23,8 @@ function Field({ pitch }) {
 
     return (
 
-        <div>
-            <img src={field} />
+        <div style={{marginLeft:"-50em"}}>
+            <img style={{width: "32em", marginTop:"2em"}} src={field} />
             {Object.entries(pitch.position)
                 .map(
                     ([pos, val], i) =>
@@ -35,9 +35,12 @@ function Field({ pitch }) {
                             pitch.position[pos]
                                 .map(
                                     (player, i) =>
-                                        <p key={i} style={{ width: "100%", textAlign: "center", position: "relative", bottom: "500px" }}>
-                                            {pos}: {player ? player.name : "add"}
-                                        </p>
+                                        <div key={i} style={{ width: "100%", textAlign: "center", position: "relative", bottom: "525px", marginRight:"-1em"}}>
+                                            <div>{player ? <img style={{width:"2em", height:"auto" }} src={player.photo}/> : ""}</div>
+                                            <div>{pos}</div>
+                                            <div >{player ? player.name : "add"}</div>
+                                            <div>{player ? player.weeklyPoints : ""}</div>
+                                        </div>
                                 )
                         }
                     </div>
