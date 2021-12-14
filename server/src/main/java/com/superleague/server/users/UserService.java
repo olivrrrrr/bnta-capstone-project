@@ -35,10 +35,10 @@ public class UserService {
 
 
     public User getUserByEmail(String email) {
-        boolean exists = doesPersonWithEmailExists(email);
-        if (!exists) {
-            throw new IllegalStateException("Account with email " + email + " not found");
-        }
+//        boolean exists = doesPersonWithEmailExists(email);
+//        if (!exists) {
+//            throw new IllegalStateException("Account with email " + email + " not found");
+//        }
         return userRepository.getUserByEmail(email).get();
     }
 
