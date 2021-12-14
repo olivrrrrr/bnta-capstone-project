@@ -5,7 +5,7 @@ import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
 
 
-function UserPage() {
+function UserPage({userId}) {
 
     const emptyPitch = {
         position: {
@@ -30,7 +30,7 @@ function UserPage() {
     useEffect(() => {
         // getAllPlayers()
         //     .then(response => setPlayers(response))
-        getTeam(1)
+        getTeam(userId)
             .then(response => {
                 if (response)
                 {
