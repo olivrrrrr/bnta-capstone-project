@@ -52,7 +52,7 @@ function UserPage() {
                 if (player.position === 'Attacker' ) {
                     const index = pitch.position.FWD.indexOf(null)
                     if (index !== -1){
-                        let tempPitch = pitch
+                        let tempPitch = Object.assign({}, pitch);
                         tempPitch.position.FWD[index] = player
                         tempPitch.Clubs[`${player.teamName}`] = 1;
                         tempPitch.Leagues[`${player.leagueName}`] += 1
@@ -63,7 +63,7 @@ function UserPage() {
                 else if (player.position === 'Midfielder') {
                     const index = pitch.position.MID.indexOf(null)
                     if (index !== -1){
-                        let tempPitch = pitch
+                        let tempPitch = Object.assign({}, pitch);
                         tempPitch.position.MID[index] = player
                         tempPitch.Clubs[`${player.teamName}`] = 1;
                         tempPitch.Leagues[`${player.leagueName}`] += 1
@@ -74,7 +74,7 @@ function UserPage() {
                 else if (player.position === 'Defender') {
                     const index = pitch.position.DEF.indexOf(null)
                     if (index !== -1){
-                        let tempPitch = pitch
+                        let tempPitch = Object.assign({}, pitch);
                         tempPitch.position.DEF[index] = player
                         tempPitch.Clubs[`${player.teamName}`] = 1;
                         tempPitch.Leagues[`${player.leagueName}`] += 1
@@ -85,7 +85,7 @@ function UserPage() {
                 else if (player.position === 'Goalkeeper') {
                     const index = pitch.position.GK.indexOf(null)
                     if (index !== -1){
-                        let tempPitch = pitch
+                        let tempPitch = Object.assign({}, pitch);
                         tempPitch.position.GK[index] = player
                         tempPitch.Clubs[`${player.teamName}`] = 1;
                         tempPitch.Leagues[`${player.leagueName}`] += 1
