@@ -1,5 +1,6 @@
 package com.superleague.server.players;
 
+import com.sun.tools.jconsole.JConsoleContext;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -88,10 +89,42 @@ class PlayerRepositoryTest {
         System.out.println("actual: " + acutal);
         assertEquals(expected, acutal);
 
+        //when
+        List<Player> actual = underTest.findAll();
+        List <Player> expected2 = playerData;
+        //then
+        assertEquals(expected2, actual);
+
     }
 
     @Test
-    @Disabled
     void findPlayersByPosition() {
+        //given
+        String position = "Attacker";
+        //when
+        List<Player> acutal = underTest.findPlayersByPosition(position);
+        List<Player> expected = List.of(new Player(4l,
+                "M. Poundjé The Second",
+                "https://media.api-sports.io/football/players/1263.png",
+                "Bordeaux",
+                0, 0, 0, 0, 0, 0,
+                "Attacker",
+                0, 0,
+                "Ligue 1"
+        ));
+        //then
+        System.out.println("expected: " + expected);
+        System.out.println("actual: " + acutal);
+        assertEquals(expected, acutal);
     }
+
+    /*@Test
+    @Disabled
+    void findAllPlayers(){
+        //when
+        List<Player> actual = underTest.findAll();
+        List <Player> expected = playerData;
+        //then
+        assertEquals(expected, actual);
+    }*/
 }

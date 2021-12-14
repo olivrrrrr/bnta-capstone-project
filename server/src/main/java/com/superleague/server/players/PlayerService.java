@@ -23,10 +23,13 @@ public class PlayerService {
         playerRepository.save(player);
     }
 
-    public void deletePlayer(Long playerID){
+    public int deletePlayer(Long playerID){
         boolean exists = playerRepository.existsById(playerID);
         if (!exists) throw new IllegalStateException("Player with id: " + playerID + " doesn't exist");
-        playerRepository.deleteById(playerID);
+        else{
+            playerRepository.deleteById(playerID);
+            return 1;
+        }
     }
 
 
