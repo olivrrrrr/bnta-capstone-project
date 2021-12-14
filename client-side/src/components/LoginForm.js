@@ -33,7 +33,7 @@ function LoginForm({onLoginFormSubmit}) {
                 </div>
                 <div className="formElement">
                     <label htmlFor="password">Password: </label>
-                    <input type="text" id="password" value={password}
+                    <input type="password" id="password" value={password}
                         onChange={handlePasswordChange} />
                 </div>
                 <div className="formElement">
