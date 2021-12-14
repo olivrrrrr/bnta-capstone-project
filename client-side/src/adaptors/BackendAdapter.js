@@ -27,7 +27,7 @@ const updateAllPlayers = (players) => {
 
 const getAllPlayers = () => {
     return axios.get("http://localhost:8080/api/v1/players/allPlayer")
-    .catch(e => {console.log(e)});
+    .then(resp=>resp.data)
 }
 
 const getTeam = (id) => {

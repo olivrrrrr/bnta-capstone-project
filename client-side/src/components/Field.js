@@ -35,7 +35,7 @@ function Field({ pitch }) {
                             pitch.position[pos]
                                 .map(
                                     (player, i) =>
-                                        <div key={i} style={{ width: "100%", textAlign: "center", position: "relative", bottom: "525px", marginRight:"-1em"}}>
+                                        <div key={i} style={{ width: "100%", textAlign: "center", position: "relative", bottom: "525px", marginRight:"-1em", border:"1px solid black"}}>
                                             <div>{player ? <img style={{width:"2em", height:"auto" }} src={player.photo}/> : ""}</div>
                                             <div>{pos}</div>
                                             <div >{player ? player.name : "add"}</div>
