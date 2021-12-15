@@ -57,8 +57,10 @@ public class PlayerService {
 
     public void addPlayers(List<Player> players) {
         playerRepository.saveAll(players);
+        System.out.println("done 0");
     }
 
+    //Method not in use
     @Transactional
     public void updatePlayerGoals(Long playerID, int goals){
         Player player = playerRepository.findPlayerById(playerID)
@@ -71,6 +73,7 @@ public class PlayerService {
         }
     }
 
+    //Method not in use
     @Transactional
     public void updatePlayerAssists(Long playerID, int assists){
         Player player = playerRepository.findPlayerById(playerID)
@@ -83,6 +86,7 @@ public class PlayerService {
         }
     }
 
+    //Method not in use
     @Transactional
     public void updatePlayerYellows(Long playerID, int yellows){
         Player player = playerRepository.findPlayerById(playerID)
@@ -94,7 +98,7 @@ public class PlayerService {
             player.setWeeklyPoints(player.getWeeklyPoints() - diff);
         }
     }
-
+    //Method not in use
     @Transactional
     public void updatePlayerReds(Long playerID, int reds){
         Player player = playerRepository.findPlayerById(playerID)
@@ -106,7 +110,7 @@ public class PlayerService {
             player.setWeeklyPoints(player.getWeeklyPoints() - 3*diff);
         }
     }
-
+    //Method not in use
     @Transactional
     public void updatePlayerCleanSheets(Long playerID, int conceded, int appearances){
         Player player = playerRepository.findPlayerById(playerID)
@@ -119,6 +123,7 @@ public class PlayerService {
             player.setWeeklyPoints(player.getWeeklyPoints() + 4*diff);
         }
     }
+    //Method not in use
     @Transactional
     public void updatePlayerAppearances(Long playerID, int appearances){
         Player player = playerRepository.findPlayerById(playerID)
@@ -144,14 +149,9 @@ public class PlayerService {
                 playerRepository.save(newPlayer);
             }
             else {
-                currentPlayer.get().setWeeklyPoints(0);
-                updatePlayerGoals(id, newPlayer.getGoals());
-                updatePlayerAssists(id, newPlayer.getAssists());
-                updatePlayerYellows(id, newPlayer.getYellows());
-                updatePlayerReds(id, newPlayer.getReds());
-                updatePlayerCleanSheets(id, newPlayer.getConceded(), newPlayer.getAppearances());
-                updatePlayerAppearances(id, newPlayer.getAppearances());
-                currentPlayer.get().setTotalPoints(currentPlayer.get().getTotalPoints() + currentPlayer.get().getWeeklyPoints());
+                  int weeklyPoints = calculateTotalPoints(newPlayer) - currentPlayer.get().getTotalPoints();
+                  currentPlayer.get().setTotalPoints(calculateTotalPoints(newPlayer));
+                  currentPlayer.get().setWeeklyPoints(weeklyPoints);
             }
 //            currentPlayer.setWeeklyPoints(0);
 //            updatePlayerGoals(id, newPlayer.getGoals());
@@ -162,6 +162,7 @@ public class PlayerService {
 //            updatePlayerAppearances(id, newPlayer.getAppearances());
 //            currentPlayer.setTotalPoints(currentPlayer.getTotalPoints() + currentPlayer.getWeeklyPoints());
         }
+        System.out.println("done");
     }
 
     public Player getPlayerById(long id) {
@@ -174,5 +175,30 @@ public class PlayerService {
 
     public List<Player> findPlayerByPosition(String position) {
          return playerRepository.findPlayersByPosition(position);
+    }
+
+    //Method to calculate the total points of a player
+    public int calculateTotalPoints(Player player) {
+        int appPoints = player.getAppearances() * 1;
+        int goalPoints = player.getGoals() * 5;
+        int assistPoints = player.getAssists() * 3;
+        int redPoints = player.getReds() * (-3);
+        int yellowPoints = player.getYellows() * (-1);
+        int concededPoints = 0;
+
+        if(player.getConceded() == 0) {
+            if(player.getPosition().equals("Goalkeeper"))
+            {
+                concededPoints = 5;
+            }
+            if (player.getPosition().equals("Defender")) {
+                concededPoints = 3;
+            }
+            if(player.getPosition().equals("Midfielder")) {
+                concededPoints = 1;
+            }
+        }
+
+        return (appPoints + goalPoints + assistPoints + redPoints + yellowPoints + concededPoints);
     }
 }
