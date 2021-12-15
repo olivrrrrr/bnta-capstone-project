@@ -116,7 +116,7 @@ function UserPage() {
 
             ?
 
-            <div style={{display:"flex"}}>
+            <div>
                 <Field pitch={pitch} />
                 {/* <PlayerSelector players={players} /> */}    
                 <PlayerChoose/>
