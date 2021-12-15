@@ -1,12 +1,17 @@
-import { ReactChild, useState, useEffect } from "react";
+import { ReactChild, useState, useEffect , useContext} from "react";
 import { getAllPlayers } from "../adaptors/BackendAdapter";
-import Table from "react-bootstrap/Table";
+import Table from "react-bootstrap/Table"
 import "./PlayerSelection.css";
+import {ThemeContext} from '../contexts/ThemeContext'
+import { Container } from "react-bootstrap";
 
 function PlayerSelector({ addPlayerToPitch }) {
   const [players, setPlayers] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
 
   useEffect(() => {
     getAllPlayers().then((resp) => {
@@ -84,43 +89,43 @@ function PlayerSelector({ addPlayerToPitch }) {
         style={{ position: "absolute", top: "10em", right: "56em" }}
         type="search"
       />
-      <div class="container">
+      <div className={`container ${darkMode? "container-dark" : "container-light" }`}>
         {/* <input type="search"/> */}
-        <div class="row table-box">
-          <table class="col-xs-7 table-bordered table-striped table-condensed table-fixed table sticky">
+        <div className="row table-box">
+          <table className={`col-xs-7 table-bordered table-striped table-condensed table-fixed table sticky" ${darkMode? "container-dark" : "container-light" }`}>
             <thead>
               <tr>
-                <th class="col">Player</th>
-                <th class="col">Player Name</th>
-                <th class="col">Position</th>
-                <th class="col">League</th>
-                <th class="col">Team</th>
-                <th class="col">Total Points</th>
-                {/* <th class="col">App</th>
-                        <th class="col">Goals</th>
-                        <th class="col">Assists</th>
-                        <th class="col">Conceded</th>
-                        <th class="col">Yellows</th>
-                        <th class="col">Reds</th> */}
+                <th className="col">Player</th>
+                <th className="col">Player Name</th>
+                <th className="col">Position</th>
+                <th className="col">League</th>
+                <th className="col">Team</th>
+                <th className="col">Total Points</th>
+                {/* <th className="col">App</th>
+                        <th className="col">Goals</th>
+                        <th className="col">Assists</th>
+                        <th className="col">Conceded</th>
+                        <th className="col">Yellows</th>
+                        <th className="col">Reds</th> */}
               </tr>
             </thead>
             {/* <tbody> */}
             {filteredPlayers.map((player) => (
-              <tr class="col">
+              <tr className="col">
                 <img style={{ width: "5.1em" }} src={player.photo} />
-                <td class="col">{player.name}</td>
-                <td class="col">{player.position}</td>
-                <td class="col">{player.leagueName}</td>
-                <td class="col">{player.teamName}</td>
-                <td class="col">{player.totalPoints}</td>
-                {/* <td class="col">{player.appearances}</td>
-                   <td class="col">{player.goals}</td>
-                   <td class="col">{player.assists}</td>
-                   <td class="col">{player.conceded}</td>
-                   <td class="col">{player.yellows}</td>
-                   <td class="col">{player.reds}</td> */}
-                <td class="col">
-                  <button
+                <td className="col">{player.name}</td>
+                <td className="col">{player.position}</td>
+                <td className="col">{player.leagueName}</td>
+                <td className="col">{player.teamName}</td>
+                <td className="col">{player.totalPoints}</td>
+                {/* <td className="col">{player.appearances}</td>
+                   <td className="col">{player.goals}</td>
+                   <td className="col">{player.assists}</td>
+                   <td className="col">{player.conceded}</td>
+                   <td className="col">{player.yellows}</td>
+                   <td className="col">{player.reds}</td> */}
+                <td className="col">
+                  <button className={`${darkMode ? "container-light" : "container-light"}`}
                     onClick={() => {
                       addPlayerToPitch(player);
                     }}
@@ -142,25 +147,25 @@ function PlayerSelector({ addPlayerToPitch }) {
 
 export default PlayerSelector;
 
-{
-  /* <Table  striped bordered hover responsive>
-<thead>
-    <tr>
-        <th>Rank</th>
-        <th>Username</th>
-        <th>Team Name</th>
-        <th>Points</th>
-    </tr>
-</thead>
-<tbody>
-{leaderboard.map((user, i) => 
-    <tr>
-        <td>{i+1}</td>
-        <td>{user.username}</td>
-        <td>{user.teamName}</td>
-        <td>{user.totalPoints}</td>
-    </tr>
-)}
-</tbody>
-</Table> */
-}
+// {
+//    <Table  striped bordered hover responsive>
+// <thead>
+//     <tr>
+//         <th>Rank</th>
+//         <th>Username</th>
+//         <th>Team Name</th>
+//         <th>Points</th>
+//     </tr>
+// </thead>
+// <tbody>
+// {leaderboard.map((user, i) => 
+//     <tr>
+//         <td>{i+1}</td>
+//         <td>{user.username}</td>
+//         <td>{user.teamName}</td>
+//         <td>{user.totalPoints}</td>
+//     </tr>
+// )}
+// </tbody>
+// </Table> 
+// }
