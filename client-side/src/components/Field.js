@@ -36,6 +36,7 @@ function Field({ pitch }) {
                             pitch.position[pos]
                                 .map(
                                     (player, i) =>
+
                                         <div key={i} style={{ fontFamily: "Gill Sans", width: "100%", textAlign: "center", position: "relative", bottom: "525px", marginRight:"-1em", margin: "0 auto"}}>
                                             <div class="card">
                                             {/* <div class="card"> style={{height: "7em", width: "5em", position: "relative", marginLeft: "2em", borderRadius: "10px", borderWidth: "2px", boxShadow: "1px 3px black", backgroundColor: "#EEBC1D", color: "white"}}> */}

@@ -3,7 +3,7 @@ import {useState, useEffect} from  'react'
 import {getAllPlayers, getTeam, getUser} from '../adaptors/BackendAdapter'
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
-
+import PlayerChoose from '../components/PlayerSelector'
 
 function UserPage() {
 
@@ -118,9 +118,11 @@ function UserPage() {
 
             <div>
                 <Field pitch={pitch} />
-                {/* <PlayerSelector players={players} /> */}
+                {/* <PlayerSelector players={players} /> */}    
+                <PlayerChoose/>
+            
             </div>
-
+            
 
             :
 
