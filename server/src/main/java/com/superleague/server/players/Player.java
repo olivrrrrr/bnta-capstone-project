@@ -60,7 +60,6 @@ public class Player {
         this.leagueName = leagueName;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
