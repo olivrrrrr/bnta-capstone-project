@@ -27,7 +27,7 @@ const updateAllPlayers = (players) => {
 
 const getAllPlayers = () => {
     return axios.get("http://localhost:8080/api/v1/players/allPlayer")
-    .catch(e => {console.log(e)});
+    .then(resp=>resp.data)
 }
 
 const getTeam = (id) => {
@@ -41,5 +41,9 @@ const getUser = (id) => {
     
 }
 
+const saveFantasyTeam = (team, id) => {
+    return axios.put(`http://localhost:8080/api/v1/users/saveTeam/user=${id}`, team)
+}
 
-export {postAllPlayers, updateAllPlayers, getAllPlayers, getTeam, getUser, getLeaderboard}
+
+export {postAllPlayers, updateAllPlayers, getAllPlayers, getTeam, getUser, getLeaderboard, saveFantasyTeam}

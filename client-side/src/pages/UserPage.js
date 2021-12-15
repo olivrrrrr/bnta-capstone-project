@@ -1,9 +1,9 @@
 import React from 'react'
 import {useState, useEffect} from  'react'
-import {getAllPlayers, getTeam, getUser} from '../adaptors/BackendAdapter'
+import {getAllPlayers, getTeam, getUser, saveFantasyTeam} from '../adaptors/BackendAdapter'
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
-
+import PlayerChoose from '../components/PlayerSelector'
 
 function UserPage({userId}) {
 
@@ -42,68 +42,157 @@ function UserPage({userId}) {
 
 
 
+
+    const mapPlayerPos = (player) => {
+        
+        if(player.position === "Attacker"){
+            return "FWD"
+        }
+        else if (player.position === "Midfielder") {
+            return "MID"
+        }
+
+        else if(player.position === "Defender"){
+            return "DEF"
+        }
+        else {
+            return "GK"
+        }
+    } 
+
     const loadPlayer = (player) => {
 
-        // console.log(player)
+        const playerPosition = mapPlayerPos(player)
 
-        if (!pitch.Clubs[`${player.teamName}`]) {
-            // pitch.Clubs[`${player.teamName}` = 1]
-            if (pitch.Leagues[`${player.leagueName}`] < 3) {
-                if (player.position === 'Attacker' ) {
-                    const index = pitch.position.FWD.indexOf(null)
-                    if (index !== -1){
-                        let tempPitch = Object.assign({}, pitch);
-                        tempPitch.position.FWD[index] = player
-                        tempPitch.Clubs[`${player.teamName}`] = 1;
-                        tempPitch.Leagues[`${player.leagueName}`] += 1
-                    setPitch(
-                        tempPitch
-                    )}
-                }
-                else if (player.position === 'Midfielder') {
-                    const index = pitch.position.MID.indexOf(null)
-                    if (index !== -1){
-                        let tempPitch = Object.assign({}, pitch);
-                        tempPitch.position.MID[index] = player
-                        tempPitch.Clubs[`${player.teamName}`] = 1;
-                        tempPitch.Leagues[`${player.leagueName}`] += 1
-                    setPitch(
-                        tempPitch
-                    )}
-                }
-                else if (player.position === 'Defender') {
-                    const index = pitch.position.DEF.indexOf(null)
-                    if (index !== -1){
-                        let tempPitch = Object.assign({}, pitch);
-                        tempPitch.position.DEF[index] = player
-                        tempPitch.Clubs[`${player.teamName}`] = 1;
-                        tempPitch.Leagues[`${player.leagueName}`] += 1
-                    setPitch(
-                        tempPitch
-                    )}
-                }
-                else if (player.position === 'Goalkeeper') {
-                    const index = pitch.position.GK.indexOf(null)
-                    if (index !== -1){
-                        let tempPitch = Object.assign({}, pitch);
-                        tempPitch.position.GK[index] = player
-                        tempPitch.Clubs[`${player.teamName}`] = 1;
-                        tempPitch.Leagues[`${player.leagueName}`] += 1
-                    setPitch(
-                        tempPitch
-                    )}
+        if (pitch.position[`${playerPosition}`].indexOf(player) !== -1) {
+            alert(`${player.name} already exists in team`)
+        }
+        else {
+            if (!pitch.Clubs[`${player.teamName}`]) {
+                // pitch.Clubs[`${player.teamName}` = 1]
+                if (pitch.Leagues[`${player.leagueName}`] < 3) {
+                    if (player.position === 'Attacker' ) {
+                        const index = pitch.position.FWD.indexOf(null)
+                        if (index !== -1){
+                            let tempPitch = Object.assign({}, pitch);
+                            tempPitch.position.FWD[index] = player
+                            tempPitch.Clubs[`${player.teamName}`] = 1;
+                            tempPitch.Leagues[`${player.leagueName}`] += 1
+                        setPitch(
+                            tempPitch
+                        )}
+                    }
+                    else if (player.position === 'Midfielder') {
+                        const index = pitch.position.MID.indexOf(null)
+                        if (index !== -1){
+                            let tempPitch = Object.assign({}, pitch);
+                            tempPitch.position.MID[index] = player
+                            tempPitch.Clubs[`${player.teamName}`] = 1;
+                            tempPitch.Leagues[`${player.leagueName}`] += 1
+                        setPitch(
+                            tempPitch
+                        )}
+                    }
+                    else if (player.position === 'Defender') {
+                        const index = pitch.position.DEF.indexOf(null)
+                        if (index !== -1){
+                            let tempPitch = Object.assign({}, pitch);
+                            tempPitch.position.DEF[index] = player
+                            tempPitch.Clubs[`${player.teamName}`] = 1;
+                            tempPitch.Leagues[`${player.leagueName}`] += 1
+                        setPitch(
+                            tempPitch
+                        )}
+                    }
+                    else if (player.position === 'Goalkeeper') {
+                        const index = pitch.position.GK.indexOf(null)
+                        if (index !== -1){
+                            let tempPitch = Object.assign({}, pitch);
+                            tempPitch.position.GK[index] = player
+                            tempPitch.Clubs[`${player.teamName}`] = 1;
+                            tempPitch.Leagues[`${player.leagueName}`] += 1
+                        setPitch(
+                            tempPitch
+                        )}
+                    }
+                    else {
+                        alert(`Too many ${player.position}s`)
+                    }
                 }
                 else {
-                    alert(`Too many ${player.position}s`)
+                    alert(`Too many players from ${player.leagueName}. Maximum of three players allowed from any one league.`)
                 }
             }
             else {
-                alert(`Too many players from ${player.leagueName}. Maximum of three players allowed from any one league.`)
+                alert(`Too many player from ${player.teamName}. Maximum of one player allowed from any one team.`)
+            }            
+        }
+    }
+
+    const saveTeam = () => {
+        console.log(pitch)
+        let team = [];
+        let array = [...pitch.position.FWD];
+        console.log(array);
+        for (let player of array) {
+            console.log(player);
+            if(!player) {
+                alert('Must have 11 players in team')
+                return 1;
+            }
+            else{
+                team.push(player);
             }
         }
-        else {
-            alert(`Too many player from ${player.teamName}. Maximum of one player allowed from any one team.`)
+        for (let player of pitch.position.MID) {
+            if(!player) {
+                alert('Must have 11 players in team')
+                return 1;
+            }
+            else{
+                team.push(player);
+            }
         }
+        for (let player of pitch.position.DEF) {
+            if(!player) {
+                alert('Must have 11 players in team')
+                return 1;
+            }
+            else{
+                team.push(player);
+            }
+        }
+        for (let player of pitch.position.GK) {
+            if(!player) {
+                alert('Must have 11 players in team')
+                return 1;
+            }
+            else{
+                team.push(player);
+            }
+        }
+
+        saveFantasyTeam(team, 1)
+
+    }
+
+    const removePlayer = (playerToRemove) => {
+        let tempPitch = Object.assign({}, pitch)
+
+        const playerPosition = mapPlayerPos(playerToRemove);
+        const positionArray = tempPitch.position[playerPosition];
+
+        for(let i=0; i < positionArray.length;i ++) {
+            if(positionArray[i] === playerToRemove) {
+                tempPitch.position[playerPosition][i] = null;
+            }
+        }
+
+        tempPitch.Leagues[playerToRemove.leagueName] -= 1;
+        tempPitch.Clubs[playerToRemove.teamName] -= 1;
+        console.log(tempPitch);
+
+        setPitch(tempPitch)
     }
 
     
@@ -116,11 +205,12 @@ function UserPage({userId}) {
 
             ?
 
-            <div>
-                <Field pitch={pitch} />
-                {/* <PlayerSelector players={players} /> */}
+            <div style={{marginRight: "15em" }}>
+                <Field pitch={pitch} removePlayer={removePlayer}/>  
+                <PlayerChoose addPlayerToPitch={loadPlayer}/>
+                <button onClick={saveTeam} >Save Team</button>
             </div>
-
+            
 
             :
 

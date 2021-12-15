@@ -1,0 +1,47 @@
+/* position of table on the webpage*/
+.table-box{
+   /* padding: 5rem;  */
+   width: 100vw; 
+   position: absolute;
+   top: 14em;
+   right:10em;
+}
+
+
+/* .table-box{
+    margin-left: 65em; 
+} */
+
+.table-fixed .col {
+    width: 1%;
+}
+
+.table-fixed {
+    /* margin-left: 65rem; */
+    margin-top: 1rem;
+    
+}
+
+
+.table-fixed tbody {
+    display: block;
+    height: 100px;
+    overflow-y: auto;
+    
+}
+
+.table.sticky th{
+    position: sticky;
+    top: 0;
+    
+}
+
+.table-box{
+   /* width: 100%;  */
+   height: 505px; 
+   overflow-y: scroll; 
+   width: 60em;
+  
+   /* width: 10px; 
+   height: auto;  */
+}

@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from 'react'
 import field from '../assets/pitch.png'
+import './Field.css';
 
-function Field({ pitch }) {
+function Field({ pitch, removePlayer }) {
 
     // const [players, setPlayers] = useState([]);
 
@@ -23,21 +24,29 @@ function Field({ pitch }) {
 
     return (
 
-        <div>
-            <img src={field} />
+        <div style={{marginLeft:"-50em"}}>
+            <img style={{width: "40em", marginTop:"10em"}} src={field} />
             {Object.entries(pitch.position)
                 .map(
                     ([pos, val], i) =>
                     <div key={i}
-                        style={{ display: "flex", justifyContent: "space-between", height: "120px", marginTop: "7em", width: "25%", position: "relative", top: 0, alignItems: "center", margin: "0 auto" }}
+                        style={{ display: "flex", alignItems: "center" , justifyContent: "space-between", height: "120px", marginTop: "7em", width: "25%", position: "relative", top: 0, alignItems: "center", margin: "0 auto" }}
                     >
                         {
                             pitch.position[pos]
                                 .map(
                                     (player, i) =>
-                                        <p key={i} style={{ width: "100%", textAlign: "center", position: "relative", bottom: "500px" }}>
-                                            {pos}: {player ? player.name : "add"}
-                                        </p>
+
+                                        <div key={i} style={{fontFamily: "Gill Sans", width: "100%", textAlign: "center", position: "relative", bottom: "525px", marginRight:"-1em", margin: "auto", marginTop: "5em"}}>
+                                            <div class="card">
+                                            {/* <div class="card"> style={{height: "7em", width: "5em", position: "relative", marginLeft: "2em", borderRadius: "10px", borderWidth: "2px", boxShadow: "1px 3px black", backgroundColor: "#EEBC1D", color: "white"}}> */}
+                                            <div>{player ? <img style={{width:"2em", height:"auto", marginLeft: "2em"}} src={player.photo}/> : ""}</div>
+                                            <div class="position">{pos}</div>
+                                            <div class="name">{player ? player.name : "add"}</div>
+                                            <div class="weeklyPoints">{player ? player.weeklyPoints : ""}</div>
+                                            <button class="remove-player" onClick={() => removePlayer(player)}>Remove Player</button>
+                                        </div>
+                                        </div>
                                 )
                         }
                     </div>
