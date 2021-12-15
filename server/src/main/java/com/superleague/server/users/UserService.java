@@ -167,6 +167,8 @@ public class UserService {
     }
 
     public List<User> getLeaderboard() {
+
+        this.updateAllUserPoints();
         return userRepository.getLeaderboard();
     }
 }
