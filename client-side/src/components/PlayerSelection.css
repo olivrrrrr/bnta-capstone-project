@@ -3,8 +3,8 @@
    /* padding: 5rem;  */
    width: 100vw; 
    position: absolute;
-   top: 15em;
-   right:5em;
+   top: 14em;
+   right:10em;
 }
 
 
@@ -38,9 +38,10 @@
 
 .table-box{
    /* width: 100%;  */
-   height: 400px; 
+   height: 505px; 
    overflow-y: scroll; 
-   width: 60em;  
+   width: 60em;
+  
    /* width: 10px; 
    height: auto;  */
 }
