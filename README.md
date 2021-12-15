@@ -1,11 +1,11 @@
 # Fantasy Super League
 
-Fantasy Super League is a game that casts you in the role of a Fantasy manager. You are given the task to pick a squad of real-life players who score points for your team based on their performances in their own (real) matches (e.g. Simple game based on real life league results.
+Fantasy Super League is our BNTA capstone project. It is a web app that casts you in the role of a Fantasy manager. You are given the task to pick a squad of real-life players who score points for your team based on their performances in their own (real) matches.
 
 You score points by: number of goals scored, assists, clean sheets, appearances.
 You lose points for: red/yellow cards.
 
-Our application uses the tech stacks Java, Spring Boot and PostgreSQL to enable the user to store information using CRUD operations. For the user interface this application uses HTML, CSS, JavaScript and React. 
+Our application uses the tech stack Java, Spring Boot and PostgreSQL to store user information using CRUD operations. For the user interface this application uses HTML, CSS, JavaScript and React. To fetch the real-world player data, we used the following API: https://rapidapi.com/api-sports/api/api-football/.
 
 ## Table of Contents:
 - Planning 

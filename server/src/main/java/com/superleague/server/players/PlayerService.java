@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService {
@@ -130,18 +131,33 @@ public class PlayerService {
 
     @Transactional
     public void updateAllPlayers(List<Player> players) {
+        System.out.println(10);
         for (Player newPlayer : players){
             Long id = newPlayer.getId();
-            Player currentPlayer = playerRepository.findPlayerById(id)
-                    .orElseThrow(() -> new IllegalStateException("player not found"));
-            currentPlayer.setWeeklyPoints(0);
-            updatePlayerGoals(id, newPlayer.getGoals());
-            updatePlayerAssists(id, newPlayer.getAssists());
-            updatePlayerYellows(id, newPlayer.getYellows());
-            updatePlayerReds(id, newPlayer.getReds());
-            updatePlayerCleanSheets(id, newPlayer.getConceded(), newPlayer.getAppearances());
-            updatePlayerAppearances(id, newPlayer.getAppearances());
-            currentPlayer.setTotalPoints(currentPlayer.getTotalPoints() + currentPlayer.getWeeklyPoints());
+//            Player currentPlayer = playerRepository.findPlayerById(id)
+//                    .orElseThrow(() -> new IllegalStateException("player not found"));
+            Optional<Player> currentPlayer = playerRepository.findPlayerById(id);
+            if(currentPlayer.isEmpty()) {
+                playerRepository.save(newPlayer);
+            }
+            else {
+                currentPlayer.get().setWeeklyPoints(0);
+                updatePlayerGoals(id, newPlayer.getGoals());
+                updatePlayerAssists(id, newPlayer.getAssists());
+                updatePlayerYellows(id, newPlayer.getYellows());
+                updatePlayerReds(id, newPlayer.getReds());
+                updatePlayerCleanSheets(id, newPlayer.getConceded(), newPlayer.getAppearances());
+                updatePlayerAppearances(id, newPlayer.getAppearances());
+                currentPlayer.get().setTotalPoints(currentPlayer.get().getTotalPoints() + currentPlayer.get().getWeeklyPoints());
+            }
+//            currentPlayer.setWeeklyPoints(0);
+//            updatePlayerGoals(id, newPlayer.getGoals());
+//            updatePlayerAssists(id, newPlayer.getAssists());
+//            updatePlayerYellows(id, newPlayer.getYellows());
+//            updatePlayerReds(id, newPlayer.getReds());
+//            updatePlayerCleanSheets(id, newPlayer.getConceded(), newPlayer.getAppearances());
+//            updatePlayerAppearances(id, newPlayer.getAppearances());
+//            currentPlayer.setTotalPoints(currentPlayer.getTotalPoints() + currentPlayer.getWeeklyPoints());
         }
     }
 
