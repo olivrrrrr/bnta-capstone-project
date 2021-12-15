@@ -1,0 +1,54 @@
+/* .card {
+    background: rgba(255,255,255,0.3);
+  height:350px;
+  width: 500px;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card > img {
+    position: absolute;
+  width: 60%;
+  bottom: 0;
+  right: 0;
+  border-radius: 0 0 35px 0;
+}
+
+.card-name {
+    background: linear-gradient(to right, #bc4e9c, #f80759);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 38px;
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+
+.card-weeklyPoints {
+    position: absolute;
+    background: linear-gradient(to right, #bc4e9c, #f80759);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-weight: 700;
+   font-size: 160px;
+   top: 50px;
+   left: 50px;
+} */
+
+.card {
+    margin: 0 auto;
+    display: grid;
+    justify-content: right;
+    align-content:right;
+    height: 7em;
+    width: 5em; 
+    position: relative;
+    border-radius: 10px;
+    border-width: 2px; 
+    box-shadow: "1px 3px black";
+    background-color: "#EEBC1D", "white";
+}
