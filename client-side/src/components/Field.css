@@ -41,5 +41,14 @@
 
 .card {
     margin: 0 auto;
-    
+    display: grid;
+    justify-content: right;
+    align-content:right;
+    height: 7em;
+    width: 5em; 
+    position: relative;
+    border-radius: 10px;
+    border-width: 2px; 
+    box-shadow: "1px 3px black";
+    background-color: "#EEBC1D", "white";
 }
