@@ -26,7 +26,7 @@ import java.util.List;
 
 
     @PutMapping("updateAllPlayers")
-    public void updateAllPlayers(List<Player> players){
+    public void updateAllPlayers(@RequestBody List<Player> players){
         /*
         get all players in our db
         get a list of players from fetch
