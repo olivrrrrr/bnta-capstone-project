@@ -6,6 +6,10 @@ import Field from '../components/Field'
 import PlayerChoose from '../components/PlayerSelector'
 import Navbar from '../components/Navbar'
 import {ThemeContext} from '../contexts/ThemeContext'
+import './UserPage.css'
+
+
+
 
 function UserPage({userId}) {
 
@@ -224,10 +228,10 @@ function UserPage({userId}) {
 
             <div>
                 <Navbar/>
-                <div style={{marginRight: "15em" }}>
-                <Field pitch={pitch} removePlayer={removePlayer} saveTeam={saveTeam} userId={userId}/>  
+                <div className="userPage" style={{marginRight: "15em" }}>
+                <Field className="pitch" pitch={pitch} removePlayer={removePlayer} saveTeam={saveTeam} userId={userId}/>  
                   
-                <PlayerChoose addPlayerToPitch={loadPlayer}/>
+                <PlayerChoose className="playertable" addPlayerToPitch={loadPlayer}/>
                 {/* <button onClick={saveTeam} style={{marginRight: "50em"}}>Save Team</button> */}
             </div>
 

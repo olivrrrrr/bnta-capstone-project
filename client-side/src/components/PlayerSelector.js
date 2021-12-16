@@ -86,7 +86,7 @@ function PlayerSelector({ addPlayerToPitch }) {
     <div>
       <input className={`player-search ${darkMode ? "search-dark" : "search-light"}`}
         onChange={onSearchChange}
-        style={{ position: "relative", top: "10em", right: "56em" }}
+        style={{ position: "absolute", left:"75rem", top: "20em", right: "56em", padding: "1em"}}
         type="search"
         placeholder="search"
       />
