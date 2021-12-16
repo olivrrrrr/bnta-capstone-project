@@ -28,7 +28,7 @@ function Field({ pitch, removePlayer, saveTeam, userId}) {
     useEffect(()=>{
         getUser(userId)
         .then(response => setUser(response.data))
-    })
+    }, [])
 
     //console.log(user);
 
