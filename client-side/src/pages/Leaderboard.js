@@ -1,8 +1,10 @@
-import {React, useEffect,useState} from 'react'; 
+import {React, useEffect,useState, useContext} from 'react'; 
 import { getLeaderboard } from '../adaptors/BackendAdapter';
 import './Leaderboard.css'
 import Table from 'react-bootstrap/Table'
 import Navbar from '../components/Navbar'
+import {ThemeContext} from '../contexts/ThemeContext'
+import { Tab } from 'react-bootstrap';
 
 
 function Leaderboard() {
@@ -15,6 +17,9 @@ function Leaderboard() {
    },[])
 
      console.log(leaderboard)
+
+     const theme = useContext(ThemeContext);
+     const darkMode = theme.state.darkMode;
    
     return (
         
@@ -22,7 +27,7 @@ function Leaderboard() {
         <section>
         <Navbar/>
         <div style={{marginTop:"7em"}}>
-               <Table  striped bordered hover responsive>
+               <Table  striped bordered hover responsive className={`${darkMode? "table-dark" : "table-light"}`}>
                     <thead>
                         <tr>
                             <th>Rank</th>

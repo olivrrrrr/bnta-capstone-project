@@ -45,3 +45,11 @@
    /* width: 10px; 
    height: auto;  */
 }
+
+.container-dark{
+    color: white !important;
+}
+
+.container-light{
+    color: black !important;
+}
