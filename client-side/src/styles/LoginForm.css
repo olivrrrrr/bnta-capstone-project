@@ -29,6 +29,10 @@
     box-shadow: 1px 1px white;
 }
 
+.login-dark > form > .form-element > input {
+    color: black;
+}
+
 .login-dark > form > .submit-button > input {
     background-color: #262626;
     color: white;
