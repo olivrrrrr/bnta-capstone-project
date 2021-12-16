@@ -7,11 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 ReactDOM.render(
-  <ThemeProvider>
+  
   <BrowserRouter>
+  <ThemeProvider>
     <App />
-  </BrowserRouter>
-  </ThemeProvider>,
+    </ThemeProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

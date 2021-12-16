@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai"
 import './Navbar.css'
 import MobileNavigation from './MobileNavigation';
+import ThemeToggle from './ThemeToggle';
 
 
 
@@ -32,9 +33,12 @@ function Navbar() {
                         <li> <a href="/adminpage">Admin</a></li>
                         <li> <a href="/">Log Out</a></li>
                     </ul>
+
                 </div>   
                 {open && <MobileNavigation isMobile={true} closeMobileMenu={closeMobileMenu} />}
-              
+          
+            </div>  
+
         </section>
     )
 }
