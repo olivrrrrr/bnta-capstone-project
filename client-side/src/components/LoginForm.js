@@ -21,11 +21,11 @@ function LoginForm({onLoginFormSubmit}) {
     const handleFormSubmission = (event) => {
         event.preventDefault();
 
-        const hashedPassword = bcrypt.hashSync(password, salt)
+        // const hashedPassword = bcrypt.hashSync(password, salt)
 
-        console.log(hashedPassword)
+        // console.log(hashedPassword)
 
-        onLoginFormSubmit(identity, hashedPassword);
+        onLoginFormSubmit(identity, password);
 
         setIdentity("")
         setPassword("")
