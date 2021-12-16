@@ -18,6 +18,15 @@
     padding-right: 8em;
 }
 
+.super-league-logo {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    border-radius: 5%;
+}
+
+
+
 @media (max-width: 640px) {
     .login-page {
     width: 100%;
@@ -28,5 +37,11 @@
     height: 100vh;
     background-image: url(../images/loginpagesuperleague.jpg);
     padding-right: 0em;
-}
+
+    }
+
+    .super-league-logo {
+        width: 200px;
+        height: auto;
+    }
 }

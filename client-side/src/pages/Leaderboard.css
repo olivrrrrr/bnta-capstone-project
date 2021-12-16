@@ -1,3 +1,11 @@
+.table-dark{
+  color: white;
+}
+
+.table-light{
+  color: black;
+}
+
 /* 
 div{
     width: 80%; 

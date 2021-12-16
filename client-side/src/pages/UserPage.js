@@ -1,11 +1,15 @@
 import React from 'react'
-import {useState, useEffect} from  'react'
+import {useState, useEffect, useContext} from  'react'
 import {getAllPlayers, getTeam, getUser, saveFantasyTeam} from '../adaptors/BackendAdapter'
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
 import PlayerChoose from '../components/PlayerSelector'
+import Navbar from '../components/Navbar'
+import {ThemeContext} from '../contexts/ThemeContext'
 
 function UserPage({userId}) {
+
+
 
     const emptyPitch = {
         position: {
@@ -81,8 +85,11 @@ function UserPage({userId}) {
                         setPitch(
                             tempPitch
                         )}
+                        else {
+                            alert(`Too many ${player.position}s`)
+                        }
                     }
-                    else if (player.position === 'Midfielder') {
+                    if (player.position === 'Midfielder') {
                         const index = pitch.position.MID.indexOf(null)
                         if (index !== -1){
                             let tempPitch = Object.assign({}, pitch);
@@ -92,8 +99,11 @@ function UserPage({userId}) {
                         setPitch(
                             tempPitch
                         )}
+                        else {
+                            alert(`Too many ${player.position}s`)
+                        }
                     }
-                    else if (player.position === 'Defender') {
+                    if (player.position === 'Defender') {
                         const index = pitch.position.DEF.indexOf(null)
                         if (index !== -1){
                             let tempPitch = Object.assign({}, pitch);
@@ -103,8 +113,11 @@ function UserPage({userId}) {
                         setPitch(
                             tempPitch
                         )}
+                        else {
+                            alert(`Too many ${player.position}s`)
+                        }
                     }
-                    else if (player.position === 'Goalkeeper') {
+                    if (player.position === 'Goalkeeper') {
                         const index = pitch.position.GK.indexOf(null)
                         if (index !== -1){
                             let tempPitch = Object.assign({}, pitch);
@@ -114,9 +127,9 @@ function UserPage({userId}) {
                         setPitch(
                             tempPitch
                         )}
-                    }
-                    else {
-                        alert(`Too many ${player.position}s`)
+                        else {
+                            alert(`Too many ${player.position}s`)
+                        }
                     }
                 }
                 else {
@@ -172,13 +185,17 @@ function UserPage({userId}) {
             }
         }
 
-        saveFantasyTeam(team, 1)
+        saveFantasyTeam(team, userId)
 
     }
 
     const removePlayer = (playerToRemove) => {
         let tempPitch = Object.assign({}, pitch)
 
+        if (!playerToRemove){
+            alert("No player to remove in this position")
+            return
+        }
         const playerPosition = mapPlayerPos(playerToRemove);
         const positionArray = tempPitch.position[playerPosition];
 
@@ -205,11 +222,17 @@ function UserPage({userId}) {
 
             ?
 
-            <div style={{marginRight: "15em" }}>
+            <div>
+                <Navbar/>
+                <div style={{marginRight: "15em" }}>
                 <Field pitch={pitch} removePlayer={removePlayer} saveTeam={saveTeam}/>  
+                  
                 <PlayerChoose addPlayerToPitch={loadPlayer}/>
                 {/* <button onClick={saveTeam} style={{marginRight: "50em"}}>Save Team</button> */}
             </div>
+
+            </div>
+         
             
 
             :

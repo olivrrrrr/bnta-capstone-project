@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import bcrypt from 'bcryptjs'
 import '../styles/LoginForm.css'
+import { ThemeContext } from '../contexts/ThemeContext';
 
 //https://medium.com/boca-code/how-to-encrypt-password-in-your-react-app-before-you-send-it-to-the-api-6e10a06f0a8e
 const salt = bcrypt.genSaltSync(10);
@@ -10,6 +11,8 @@ function RegisterForm({onRegisterFormSubmit}) {
     const [password, setPassword] = useState("")
     const [userName, setUserName] = useState("")
     const [teamName, setTeamName] = useState("")
+    const theme = useContext(ThemeContext);
+    const darkMode = theme.state.darkMode;
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value)
@@ -48,7 +51,7 @@ function RegisterForm({onRegisterFormSubmit}) {
     }
 
     return (
-        <div className="login-display">
+        <div className={`login-display ${darkMode? "login-dark" : "login-light"} `}>
             <h2>Register</h2>
             <form onSubmit={handleFormSubmission}>
                 <div className="form-element">
