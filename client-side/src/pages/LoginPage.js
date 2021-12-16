@@ -58,6 +58,7 @@ function LoginPage({ setData }) {
     return (
 
         <div className="login-page">
+            <img className="super-league-logo" src="superleaguedark.png"/>
             <LoginForm onLoginFormSubmit={onLoginFormSubmit}></LoginForm>
             <RegisterForm onRegisterFormSubmit={onRegisterFormSubmit}></RegisterForm>
         </div>

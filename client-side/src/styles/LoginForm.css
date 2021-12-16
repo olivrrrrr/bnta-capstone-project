@@ -1,9 +1,10 @@
 .login-display {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 10%;
     padding: 1em;
-    height: 35%;
-    background-color: white;
+    /* height: 35%; */
+    /* background-color: white; */
+    font-size: 14px;
 }
 
 .form-element {
@@ -20,4 +21,27 @@
 .form-element > input{
     display: flex;
     width: 65%;
+}
+
+.login-dark {
+    color: white;
+    background-color: #262626;
+    box-shadow: 1px 1px white;
+}
+
+.login-dark > form > .submit-button > input {
+    background-color: #262626;
+    color: white;
+}
+
+.login-light {
+    color: black;
+    background-color: white;
+    box-shadow: 5px 5px black;
+
+}
+
+.login-light > form > .submit-button > input {
+    background-color: white;
+    color: black;
 }
