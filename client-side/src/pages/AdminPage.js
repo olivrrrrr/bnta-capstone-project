@@ -76,7 +76,6 @@ function AdminPage() {
                 <Button clickMethod={getAllFromLeague} name="fetch all player data" />
                 <Button clickMethod={postPlayersToDb} name="Post players to db" />
                 <Button clickMethod={updatePlayersInDb} name="Update player stats" />
-                {players[0].name}
             </div>
          </section> 
 

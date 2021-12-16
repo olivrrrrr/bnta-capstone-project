@@ -36,8 +36,6 @@ function Navbar() {
 
                 </div>   
                 {open && <MobileNavigation isMobile={true} closeMobileMenu={closeMobileMenu} />}
-          
-            </div>  
 
         </section>
     )
