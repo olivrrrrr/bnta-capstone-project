@@ -84,10 +84,11 @@ function PlayerSelector({ addPlayerToPitch }) {
 
   return players ? (
     <div>
-      <input
+      <input className={`player-search ${darkMode ? "search-dark" : "search-light"}`}
         onChange={onSearchChange}
         style={{ position: "absolute", top: "10em", right: "56em" }}
         type="search"
+        placeholder="search"
       />
       <div className={`container ${darkMode? "container-dark" : "container-light" }`}>
         {/* <input type="search"/> */}
@@ -125,7 +126,7 @@ function PlayerSelector({ addPlayerToPitch }) {
                    <td className="col">{player.yellows}</td>
                    <td className="col">{player.reds}</td> */}
                 <td className="col">
-                  <button className={`${darkMode ? "container-light" : "container-light"}`}
+                  <button className={`select-button ${darkMode ? "button-dark" : "button-light"}`}
                     onClick={() => {
                       addPlayerToPitch(player);
                     }}
