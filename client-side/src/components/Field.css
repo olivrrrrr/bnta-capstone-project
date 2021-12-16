@@ -59,3 +59,11 @@
   background-color: #EEBC1D;
   
 }
+
+.user-info-dark{
+  color: white;
+}
+
+.user-info-light{
+  color: black;
+}

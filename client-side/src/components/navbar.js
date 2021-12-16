@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../assets/Super_League_dark_mode.png'
 import {Routes, Route, Router} from 'react-router-dom';
 import './Navbar.css'
-
+import ThemeToggle from './ThemeToggle';
 
 
 
@@ -19,7 +19,8 @@ function Navbar() {
                         <li> <a href="/adminpage">Admin</a></li>
                         <li> <a href="/">Log Out</a></li>
                     </ul>
-            </div>        
+            </div>  
+                 
         </section>
     )
 }
