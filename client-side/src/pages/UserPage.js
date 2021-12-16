@@ -1,11 +1,14 @@
 import React from 'react'
-import {useState, useEffect} from  'react'
+import {useState, useEffect, useContext} from  'react'
 import {getAllPlayers, getTeam, getUser, saveFantasyTeam} from '../adaptors/BackendAdapter'
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
 import PlayerChoose from '../components/PlayerSelector'
+import {ThemeContext} from '../contexts/ThemeContext'
 
 function UserPage({userId}) {
+
+
 
     const emptyPitch = {
         position: {
