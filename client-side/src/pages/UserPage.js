@@ -221,12 +221,14 @@ function UserPage({userId}) {
             pitch
 
             ?
+
             <div>
                 <Navbar/>
                 <div style={{marginRight: "15em" }}>
-                <Field pitch={pitch} removePlayer={removePlayer}/>  
+                <Field pitch={pitch} removePlayer={removePlayer} saveTeam={saveTeam}/>  
+                  
                 <PlayerChoose addPlayerToPitch={loadPlayer}/>
-                <button onClick={saveTeam} >Save Team</button>
+                {/* <button onClick={saveTeam} style={{marginRight: "50em"}}>Save Team</button> */}
             </div>
 
             </div>
