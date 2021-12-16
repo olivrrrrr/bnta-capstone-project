@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/LoginPage.css'
 import bcrypt from 'bcryptjs'
 
+
 function LoginPage({ setData }) {
 
     const navigate = useNavigate();

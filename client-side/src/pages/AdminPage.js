@@ -3,6 +3,9 @@ import { fetchPlayerData } from '../adaptors/PlayerAdaptor';
 import { useState, useEffect } from 'react';
 import Button from '../components/Button';
 import { postAllPlayers, updateAllPlayers } from '../adaptors/BackendAdapter'
+import Navbar from '../components/Navbar'
+
+
 
 function AdminPage() {
 
@@ -67,21 +70,26 @@ function AdminPage() {
     return (
 
         players.length > 0 ?
-
+        <section>
+            <Navbar/>
             <div>
                 <Button clickMethod={getAllFromLeague} name="fetch all player data" />
                 <Button clickMethod={postPlayersToDb} name="Post players to db" />
                 <Button clickMethod={updatePlayersInDb} name="Update player stats" />
                 {players[0].name}
             </div>
+         </section> 
 
             :
             // <div>loading...</div>
+            <section>
+            <Navbar/>
             <div>
                 <Button clickMethod={getAllFromLeague} name="fetch all player data" />
                 <Button clickMethod={postPlayersToDb} name="Post players to db" />
                 <Button clickMethod={updatePlayersInDb} name="Update player stats" />
             </div>
+            </section>
     )
 }
 
