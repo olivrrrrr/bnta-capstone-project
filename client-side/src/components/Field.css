@@ -44,11 +44,18 @@
     display: grid;
     justify-content: right;
     align-content:right;
-    height: 7em;
-    width: 5em; 
+    height: 11.5em;
+    width: 8em; 
     position: relative;
     border-radius: 10px;
     border-width: 2px; 
     box-shadow: "1px 3px black";
     background-color: "#EEBC1D", "white";
+}
+
+.remove-player {
+  border: none;
+  font-size: 14px;
+  background-color: #EEBC1D;
+  
 }
