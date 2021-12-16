@@ -53,3 +53,33 @@
 .container-light{
     color: black !important;
 }
+
+.select-button{
+    border-radius: 6px;
+}
+
+.button-dark{
+    color: white;
+    background-color: rgb(50, 50, 56);
+    box-shadow: white;
+}
+.button-light{
+    color: black;
+    background-color: lightgray;
+    box-shadow: black;
+}
+
+.player-search{
+    border-radius: 6px;
+}
+
+.search-dark{
+    color: white;
+    background-color: rgb(50, 50, 56);
+    box-shadow: white;
+}
+.search-light{
+    color: black;
+    background-color: lightgray;
+    box-shadow: black;
+}
