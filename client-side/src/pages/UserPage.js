@@ -191,6 +191,10 @@ function UserPage({userId}) {
     const removePlayer = (playerToRemove) => {
         let tempPitch = Object.assign({}, pitch)
 
+        if (!playerToRemove){
+            alert("No player to remove in this position")
+            return
+        }
         const playerPosition = mapPlayerPos(playerToRemove);
         const positionArray = tempPitch.position[playerPosition];
 
