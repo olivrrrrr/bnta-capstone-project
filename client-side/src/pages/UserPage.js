@@ -4,6 +4,7 @@ import {getAllPlayers, getTeam, getUser, saveFantasyTeam} from '../adaptors/Back
 import PlayerSelector from '../components/PlayerSelector'
 import Field from '../components/Field'
 import PlayerChoose from '../components/PlayerSelector'
+import Navbar from '../components/Navbar'
 import {ThemeContext} from '../contexts/ThemeContext'
 
 function UserPage({userId}) {
@@ -221,11 +222,17 @@ function UserPage({userId}) {
 
             ?
 
-            <div style={{marginRight: "15em" }}>
-                <Field pitch={pitch} removePlayer={removePlayer}/>  
+            <div>
+                <Navbar/>
+                <div style={{marginRight: "15em" }}>
+                <Field pitch={pitch} removePlayer={removePlayer} saveTeam={saveTeam}/>  
+                  
                 <PlayerChoose addPlayerToPitch={loadPlayer}/>
-                <button onClick={saveTeam} >Save Team</button>
+                {/* <button onClick={saveTeam} style={{marginRight: "50em"}}>Save Team</button> */}
             </div>
+
+            </div>
+         
             
 
             :

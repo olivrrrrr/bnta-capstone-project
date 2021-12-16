@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/LoginPage.css'
 import bcrypt from 'bcryptjs'
 
+
 function LoginPage({ setData }) {
 
     const navigate = useNavigate();
@@ -58,6 +59,7 @@ function LoginPage({ setData }) {
     return (
 
         <div className="login-page">
+            <img className="super-league-logo" src="superleaguedark.png"/>
             <LoginForm onLoginFormSubmit={onLoginFormSubmit}></LoginForm>
             <RegisterForm onRegisterFormSubmit={onRegisterFormSubmit}></RegisterForm>
         </div>
