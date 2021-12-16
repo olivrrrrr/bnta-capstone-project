@@ -26,7 +26,7 @@ function Field({ pitch, removePlayer, saveTeam}) {
     return (
 
         <div style={{marginLeft:"-50em"}}>
-            <img style={{width: "47em", marginTop:"10em"}} src={field} />
+            <img style={{width: "47em", marginTop:"4em"}} src={field} />
             {Object.entries(pitch.position)
                 .map(
                     ([pos, val], i) =>
