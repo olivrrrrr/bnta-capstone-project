@@ -2,6 +2,7 @@ import {React, useEffect,useState} from 'react';
 import { getLeaderboard } from '../adaptors/BackendAdapter';
 import './Leaderboard.css'
 import Table from 'react-bootstrap/Table'
+import Navbar from '../components/Navbar'
 
 
 function Leaderboard() {
@@ -18,7 +19,8 @@ function Leaderboard() {
     return (
         
         leaderboard ?
-
+        <section>
+        <Navbar/>
         <div style={{marginTop:"7em"}}>
                <Table  striped bordered hover responsive>
                     <thead>
@@ -41,6 +43,7 @@ function Leaderboard() {
             </tbody>
             </Table>
         </div>
+        </section> 
 
     : 
 
