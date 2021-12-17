@@ -8,7 +8,7 @@ You lose points for: red/yellow cards.
 Our application uses Java, Spring Boot and PostgreSQL for the server-side. For the client-side, this application uses HTML, CSS, Bootstrap, JavaScript and React. To fetch the real-world player data, we used the following API: https://rapidapi.com/api-sports/api/api-football/.
 
 Slide deck: https://docs.google.com/presentation/d/18ryvr4EKlLPjj51dbxLDvrx-BNp_73CH1JSWY_l8hTc/edit?usp=sharing
-Demo: https://docs.google.com/presentation/d/18ryvr4EKlLPjj51dbxLDvrx-BNp_73CH1JSWY_l8hTc/edit?usp=sharing
+Demo: https://drive.google.com/file/d/1NGEqR47j6IyvggoNLpaCAbIn8fUOf4kw/view?usp=sharing
 
 ## Table of Contents:
 - MVP
