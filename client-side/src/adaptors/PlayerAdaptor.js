@@ -5,8 +5,8 @@ import axios from 'axios';
 //     totalPoints, weeklyPoints, leagueName) 
 
 const headers = {
-    "x-rapidapi-host" : "api-football-v1.p.rapidapi.com",
-    "x-rapidapi-key" : "8a15d1d999mshb785661a047bb68p19f301jsnc6e23033d15e",
+    "x-rapidapi-host" :
+    "x-rapidapi-key" :
 }
 
 
@@ -22,8 +22,8 @@ function fetchPlayerData(league, page) {
     return (
         axios.get(`https://api-football-v1.p.rapidapi.com/v3/players?league=${league}&season=2021&page=${page}`, {
             headers: {
-                "x-rapidapi-host":  "api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key" : "8a15d1d999mshb785661a047bb68p19f301jsnc6e23033d15e",
+                "x-rapidapi-host": 
+                "x-rapidapi-key" : 
             }
           })
             .then(
